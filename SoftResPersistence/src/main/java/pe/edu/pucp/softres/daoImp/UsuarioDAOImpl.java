@@ -228,9 +228,10 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
                 .setIdTipoUsuario(userParametro.getIdTipoUsuario())
                 .setIdTipoDocumento(userParametro.getIdTipoDocumento())
                 .setEstado(userParametro.getEstado())
+                .setNumDocumento(userParametro.getNumDocumento())
+                .setEsCliente(userParametro.getEsCliente())
                 .buildUsuariosParametros();
         }
-
         String sql = this.generarSQLParaListar();
         return (List<UsuariosDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListar, parametros);
     }
@@ -239,6 +240,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         String sql = "SELECT u.USUARIO_ID, ";
         sql += "u.ROL_ID, ";
         sql += "r.NOMBRE AS ROL_NOMBRE, ";
+        sql += "r.ES_CLIENTE AS ES_CLIENTE, ";
         sql += "u.NOMBRE_COMP, ";
         sql += "u.TIPO_DOC_ID, ";
         sql += "t.NOMBRE AS TIPO_DOC_NOMBRE, ";
@@ -259,7 +261,9 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         sql += "INNER JOIN RES_TIPO_DOCUMENTOS t ON u.TIPO_DOC_ID = t.TIPO_DOC_ID ";
         sql += "WHERE (? IS NULL OR u.ESTADO = ?) AND ";
         sql += "(u.NOMBRE_COMP LIKE CONCAT('%', ?, '%') OR ? IS NULL) AND ";
+        sql += "(u.NUMERO_DOC LIKE CONCAT('%', ?, '%') OR ? IS NULL) AND ";
         sql += "(u.ROL_ID = ? OR ? IS NULL) AND ";
+        sql += "(? IS NULL OR r.ES_CLIENTE  = ?) AND ";
         sql += "(u.TIPO_DOC_ID = ? OR ? IS NULL) ";
         sql += "ORDER BY u.ESTADO DESC, u.USUARIO_ID ASC, u.NOMBRE_COMP ASC";
         return sql;
@@ -286,21 +290,38 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
                 this.statement.setNull(3, java.sql.Types.VARCHAR);
                 this.statement.setNull(4, java.sql.Types.VARCHAR);
             }
+            //numero de documento
+            if (parametros.getNumDocumento()!= null && !parametros.getNumDocumento().trim().isEmpty()) {
+                String ndoc = parametros.getNumDocumento().trim();
+                this.statement.setString(5, ndoc);
+                this.statement.setString(6, ndoc);
+            } else {
+                this.statement.setNull(5, java.sql.Types.VARCHAR);
+                this.statement.setNull(6, java.sql.Types.VARCHAR);
+            }
             // IdTipoUsuario
             if (parametros.getIdTipoUsuario() != null) {
-                this.statement.setInt(5, parametros.getIdTipoUsuario());
-                this.statement.setInt(6, parametros.getIdTipoUsuario());
-            } else {
-                this.statement.setNull(5, java.sql.Types.INTEGER);
-                this.statement.setNull(6, java.sql.Types.INTEGER);
-            }
-            // IdTipoDocumento
-            if (parametros.getIdTipoDocumento() != null) {
-                this.statement.setInt(7, parametros.getIdTipoDocumento());
-                this.statement.setInt(8, parametros.getIdTipoDocumento());
+                this.statement.setInt(7, parametros.getIdTipoUsuario());
+                this.statement.setInt(8, parametros.getIdTipoUsuario());
             } else {
                 this.statement.setNull(7, java.sql.Types.INTEGER);
                 this.statement.setNull(8, java.sql.Types.INTEGER);
+            }
+            // es Cliente
+            if (parametros.getEsCliente()!= null) {
+                this.statement.setBoolean(9, parametros.getEsCliente());
+                this.statement.setBoolean(10, parametros.getEsCliente());
+            } else {
+                this.statement.setNull(9, java.sql.Types.BOOLEAN);
+                this.statement.setNull(10, java.sql.Types.BOOLEAN);
+            }
+            // IdTipoDocumento
+            if (parametros.getIdTipoDocumento() != null) {
+                this.statement.setInt(11, parametros.getIdTipoDocumento());
+                this.statement.setInt(12, parametros.getIdTipoDocumento());
+            } else {
+                this.statement.setNull(11, java.sql.Types.INTEGER);
+                this.statement.setNull(12, java.sql.Types.INTEGER);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

@@ -11,15 +11,18 @@ package pe.edu.pucp.softres.parametros;
 public class UsuariosParametrosBuilder {
 
     private String nombreCompleto;
+    private String numDocumento;
     private Integer idTipoUsuario; // idrol
     private Integer idTipoDocumento;
     private Boolean estado;
+    private Boolean esCliente;
 
     public UsuariosParametrosBuilder() {
         this.nombreCompleto = null;
         this.idTipoUsuario = null;
         this.idTipoDocumento = null;
         this.estado = null;
+        this.esCliente = null;
     }
     
     public UsuariosParametros buildUsuariosParametros() {
@@ -28,7 +31,19 @@ public class UsuariosParametrosBuilder {
         parametros.setIdTipoUsuario(this.idTipoUsuario);
         parametros.setIdTipoDocumento(this.idTipoDocumento);
         parametros.setEstado(this.estado);
+        parametros.setNumDocumento(this.numDocumento);
+        parametros.setEsCliente(this.esCliente);
         return parametros;
+    }
+    
+    public UsuariosParametrosBuilder setNumDocumento(String numDocumento) {
+        this.numDocumento = numDocumento;
+        return this;
+    }
+
+    public UsuariosParametrosBuilder setEsCliente(Boolean esCliente) {
+        this.esCliente = esCliente;
+        return this;
     }
     
     public UsuariosParametrosBuilder setNombreCompleto(String nombreCompleto){

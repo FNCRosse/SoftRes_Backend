@@ -154,6 +154,46 @@ public class MesaDAOImpl extends DAOImplBase implements MesaDAO {
 
         this.mesa.setUsuarioModificacion(this.resultSet.getString("USUARIO_MODIFICACION"));
     }
+    
+    protected void instanciarObjetoDelResultSetParaListado() throws SQLException {
+        this.mesa = new MesaDTO();
+
+        this.mesa.setIdMesa(this.resultSet.getInt("MESA_ID"));
+
+        // Crear y asignar LocalDTO
+        LocalDTO local = new LocalDTO();
+        local.setIdLocal(this.resultSet.getInt("LOCAL_ID"));
+        local.setNombre(this.resultSet.getString("NOMBRE_LOCAL"));
+        this.mesa.setLocal(local);
+
+        // Crear y asignar TipoMesaDTO
+        TipoMesaDTO tipoMesa = new TipoMesaDTO();
+        tipoMesa.setIdTipoMesa(this.resultSet.getInt("TMESA_ID"));
+        tipoMesa.setNombre(this.resultSet.getString("NOMBRE_TIPO_MESA"));
+        this.mesa.setTipoMesa(tipoMesa);
+
+        this.mesa.setNumeroMesa(this.resultSet.getString("NUMEROMESA"));
+        this.mesa.setCapacidad(this.resultSet.getInt("CAPACIDAD"));
+
+        String estadoStr = this.resultSet.getString("ESTADO");
+        this.mesa.setEstado(estadoStr != null ? EstadoMesa.valueOf(estadoStr) : null);
+
+        int x = this.resultSet.getInt("X");
+        this.mesa.setX(this.resultSet.wasNull() ? null : x);
+
+        int y = this.resultSet.getInt("Y");
+        this.mesa.setY(this.resultSet.wasNull() ? null : y);
+
+        Timestamp tsCreacion = this.resultSet.getTimestamp("FECHA_CREACION");
+        this.mesa.setFechaCreacion(tsCreacion);
+
+        this.mesa.setUsuarioCreacion(this.resultSet.getString("USUARIO_CREACION"));
+
+        Timestamp tsModificacion = this.resultSet.getTimestamp("FECHA_MODIFICACION");
+        this.mesa.setFechaModificacion(tsModificacion);
+
+        this.mesa.setUsuarioModificacion(this.resultSet.getString("USUARIO_MODIFICACION"));
+    }
 
     @Override
     protected void limpiarObjetoDelResultSet() {
@@ -162,7 +202,7 @@ public class MesaDAOImpl extends DAOImplBase implements MesaDAO {
 
     @Override
     protected void agregarObjetoALaLista(List lista) throws SQLException {
-        this.instanciarObjetoDelResultSet();
+        this.instanciarObjetoDelResultSetParaListado();
         lista.add(this.mesa);
     }
 
