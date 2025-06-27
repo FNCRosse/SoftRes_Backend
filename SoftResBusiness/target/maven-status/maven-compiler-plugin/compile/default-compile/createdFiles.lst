@@ -1,0 +1,15 @@
+pe\edu\pucp\softres\business\ComentarioBO.class
+pe\edu\pucp\softres\business\LocalBO.class
+pe\edu\pucp\softres\business\RolBO.class
+pe\edu\pucp\softres\business\HorarioAtencionBO.class
+pe\edu\pucp\softres\business\ReservaxMesaBO.class
+pe\edu\pucp\softres\business\MotivoCancelacionBO.class
+pe\edu\pucp\softres\business\TipoDocumentoBO.class
+pe\edu\pucp\softres\business\UsuarioBO.class
+pe\edu\pucp\softres\business\MesaBO.class
+pe\edu\pucp\softres\business\NotificacionBO.class
+pe\edu\pucp\softres\business\TipoMesaBO.class
+pe\edu\pucp\softres\business\SedeBO.class
+pe\edu\pucp\softres\business\ReservaBO.class
+pe\edu\pucp\softres\business\FilaEsperaBO.class
+pe\edu\pucp\softres\business\HorarioxSedeBO.class

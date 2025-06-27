@@ -1,0 +1,17 @@
+pe\edu\pucp\softres\services\Rol.class
+pe\edu\pucp\softres\services\Sedes.class
+pe\edu\pucp\softres\services\JakartaRestConfiguration.class
+pe\edu\pucp\softres\services\HorarioxSede.class
+pe\edu\pucp\softres\services\resources\JakartaEE10Resource.class
+pe\edu\pucp\softres\services\Local.class
+pe\edu\pucp\softres\services\ReservaxMesa.class
+pe\edu\pucp\softres\services\MotivoCancelacion.class
+pe\edu\pucp\softres\services\Mesas.class
+pe\edu\pucp\softres\services\Reserva.class
+pe\edu\pucp\softres\services\Comentarios.class
+pe\edu\pucp\softres\services\FilasEspera.class
+pe\edu\pucp\softres\services\TipoMesa.class
+pe\edu\pucp\softres\services\TipoDocumento.class
+pe\edu\pucp\softres\services\Notificaciones.class
+pe\edu\pucp\softres\services\HorariosAtencion.class
+pe\edu\pucp\softres\services\Usuario.class

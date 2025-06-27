@@ -1,0 +1,15 @@
+pe\edu\pucp\softres\business\HorarioAtencionBOTest.class
+pe\edu\pucp\softres\business\UsuarioBOTest.class
+pe\edu\pucp\softres\business\FilaEsperaBOTest.class
+pe\edu\pucp\softres\business\MotivoCancelacionBOTest.class
+pe\edu\pucp\softres\business\ReservaxMesaBOTest.class
+pe\edu\pucp\softres\business\SedeBOTest.class
+pe\edu\pucp\softres\business\LocalBOTest.class
+pe\edu\pucp\softres\business\HorarioxSedeBOTest.class
+pe\edu\pucp\softres\business\MesaBOTest.class
+pe\edu\pucp\softres\business\TipoMesaBOTest.class
+pe\edu\pucp\softres\business\ReservaBOTest.class
+pe\edu\pucp\softres\business\ComentarioBOTest.class
+pe\edu\pucp\softres\business\TipoDocumentoBOTest.class
+pe\edu\pucp\softres\business\RolBOTest.class
+pe\edu\pucp\softres\business\NotificacionBOTest.class

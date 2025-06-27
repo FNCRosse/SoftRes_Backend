@@ -1,0 +1,5 @@
+pe\edu\pucp\softres\db\DBManagerMySQL.class
+pe\edu\pucp\softres\db\util\Cifrado.class
+pe\edu\pucp\softres\db\util\MotorDeBaseDeDatos.class
+pe\edu\pucp\softres\db\DBManager.class
+pe\edu\pucp\softres\db\DBManagerMySSQL.class
