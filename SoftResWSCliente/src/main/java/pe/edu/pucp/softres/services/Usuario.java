@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import pe.edu.pucp.softres.bo.client.UsuarioBO;
+import pe.edu.pucp.softres.db.util.Cifrado;
 import pe.edu.pucp.softres.model.CredencialesDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
@@ -25,6 +26,7 @@ public class Usuario {
     public Integer insertarUsuario(UsuariosDTO usuario) throws IOException, InterruptedException {
         usuario.setFechaCreacion(new Date());
         usuario.setEstado(true);
+        usuario.setContrasenha(Cifrado.cifrarMD5(usuario.getContrasenha()));
         return this.usuarioBO.insertar(usuario);
     }
 
