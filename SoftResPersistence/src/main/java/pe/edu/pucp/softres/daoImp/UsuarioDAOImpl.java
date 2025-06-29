@@ -1,5 +1,8 @@
 package pe.edu.pucp.softres.daoImp;
 //adiwdmoiwdma
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.ZoneId;
@@ -16,6 +19,7 @@ import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
 import pe.edu.pucp.softres.parametros.UsuariosParametrosBuilder;
 import pe.edu.pucp.softres.db.util.Cifrado;
+
 /**
  *
  * @author frank
@@ -151,7 +155,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
 
         this.usuario.setUsuarioModificacion(this.resultSet.getString("USUARIO_MODIFICACION"));
     }
-    
+
     protected void instanciarObjetoDelResultSetParaListado() throws SQLException {
         this.usuario = new UsuariosDTO();
         this.usuario.setIdUsuario(this.resultSet.getInt("USUARIO_ID"));
@@ -224,13 +228,13 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
             parametros = new UsuariosParametrosBuilder().buildUsuariosParametros(); // Parámetros vacíos
         } else {
             parametros = new UsuariosParametrosBuilder()
-                .setNombreCompleto(userParametro.getNombreCompleto())
-                .setIdTipoUsuario(userParametro.getIdTipoUsuario())
-                .setIdTipoDocumento(userParametro.getIdTipoDocumento())
-                .setEstado(userParametro.getEstado())
-                .setNumDocumento(userParametro.getNumDocumento())
-                .setEsCliente(userParametro.getEsCliente())
-                .buildUsuariosParametros();
+                    .setNombreCompleto(userParametro.getNombreCompleto())
+                    .setIdTipoUsuario(userParametro.getIdTipoUsuario())
+                    .setIdTipoDocumento(userParametro.getIdTipoDocumento())
+                    .setEstado(userParametro.getEstado())
+                    .setNumDocumento(userParametro.getNumDocumento())
+                    .setEsCliente(userParametro.getEsCliente())
+                    .buildUsuariosParametros();
         }
         String sql = this.generarSQLParaListar();
         return (List<UsuariosDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListar, parametros);
@@ -291,7 +295,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
                 this.statement.setNull(4, java.sql.Types.VARCHAR);
             }
             //numero de documento
-            if (parametros.getNumDocumento()!= null && !parametros.getNumDocumento().trim().isEmpty()) {
+            if (parametros.getNumDocumento() != null && !parametros.getNumDocumento().trim().isEmpty()) {
                 String ndoc = parametros.getNumDocumento().trim();
                 this.statement.setString(5, ndoc);
                 this.statement.setString(6, ndoc);
@@ -308,7 +312,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
                 this.statement.setNull(8, java.sql.Types.INTEGER);
             }
             // es Cliente
-            if (parametros.getEsCliente()!= null) {
+            if (parametros.getEsCliente() != null) {
                 this.statement.setBoolean(9, parametros.getEsCliente());
                 this.statement.setBoolean(10, parametros.getEsCliente());
             } else {
@@ -328,7 +332,6 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         }
     }
 
-
     @Override
     public Integer modificar(UsuariosDTO usuario) {
         this.usuario = usuario;
@@ -340,11 +343,12 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         this.usuario = usuario;
         return super.eliminar();
     }
-    
+
     @Override
     protected String generarSQLParaEliminacion() {
         return super.generarSQLParaEliminacion();
     }
+
     @Override
     public UsuariosDTO obtenerPorEmailYContrasena(String email, String contrasenha) {
         UsuariosDTO usuario = null;
@@ -375,5 +379,30 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
 
         return usuario;
     }
-}
 
+    @Override
+    public Boolean validarDocumentoUnico(String numeroDocumento) {
+        boolean existe = false;
+        try {
+            this.abrirConexion(); 
+            String sql = "SELECT COUNT(*) AS TOTAL FROM RES_USUARIOS WHERE NUMERO_DOC = ? AND ESTADO = 1";
+            this.colocarSQLenStatement(sql); 
+            this.statement.setString(1, numeroDocumento);
+            this.resultSet = this.statement.executeQuery();
+
+            if (this.resultSet.next()) {
+                existe = this.resultSet.getInt("TOTAL") > 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return existe;
+    }
+
+}

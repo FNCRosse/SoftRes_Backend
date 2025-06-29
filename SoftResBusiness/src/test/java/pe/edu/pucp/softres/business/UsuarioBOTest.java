@@ -43,7 +43,7 @@ public class UsuarioBOTest {
         usuario.setRol(rol);
         usuario.setTipoDocumento(tipoDoc);
         usuario.setNombreComp("Usuario Test");
-        usuario.setNumeroDocumento("12345678");
+        usuario.setNumeroDocumento("12345877");
         usuario.setContrasenha("password123");
         usuario.setEmail("test@example.com");
         usuario.setTelefono("999999999");
@@ -104,6 +104,13 @@ public class UsuarioBOTest {
 
         UsuariosDTO eliminado = usuarioBO.obtenerPorId(userIdCreado);
         assertFalse(eliminado.getEstado()); // Verificamos que fue eliminado lógicamente
+    }
+    @Test
+    @Order(6)
+    public void testExisteDocumento(){
+        String numDocumento = "93727901";// ya esta en mi BD
+        Boolean encontrado = this.usuarioBO.validarDocumentoUnico(numDocumento);
+        assertTrue(encontrado);
     }
 }
 

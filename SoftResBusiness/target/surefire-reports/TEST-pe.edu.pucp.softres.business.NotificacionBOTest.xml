@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.049" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.05" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Users\Rosse\AppData\Local\Temp\surefire12051242577525342153\surefirebooter-20250627145045191_3.jar C:\Users\Rosse\AppData\Local\Temp\surefire12051242577525342153 2025-06-27T14-50-45_068-jvmRun1 surefire-20250627145045191_1tmp surefire_0-20250627145045191_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Rosse\AppData\Local\Temp\surefire7346550503222112914\surefirebooter-20250627194614644_3.jar C:\Users\Rosse\AppData\Local\Temp\surefire7346550503222112914 2025-06-27T19-46-14_513-jvmRun1 surefire-20250627194614644_1tmp surefire_0-20250627194614644_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Rosse\Downloads\SoftRes_Backend_v13\SoftRes_Backend\SoftResBusiness\target\test-classes;C:\Users\Rosse\Downloads\SoftRes_Backend_v13\SoftRes_Backend\SoftResBusiness\target\classes;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\Rosse\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\3.0.1\jakarta.xml.bind-api-3.0.1.jar;C:\Users\Rosse\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResDBManager\1.0-SNAPSHOT\SoftResDBManager-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\Rosse\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\Rosse\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Rosse\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Rosse\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Rosse\AppData\Local\Temp\surefire12051242577525342153\surefirebooter-20250627145045191_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Rosse\AppData\Local\Temp\surefire7346550503222112914\surefirebooter-20250627194614644_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -60,20 +60,20 @@
     <property name="java.class.version" value="66.0"/>
   </properties>
   <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.01">
-    <system-err><![CDATA[jun 27, 2025 2:50:46 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+    <system-err><![CDATA[jun 27, 2025 7:46:15 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
 INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, TIPO_NOTIFICACION, ESTADO) VALUES (3, 'Notificacion de Insercion', 0, 'RECORDATORIO', 'PENDIENTE')
 ]]></system-err>
   </testcase>
-  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.013">
-    <system-err><![CDATA[jun 27, 2025 2:50:46 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_NOTIFICACIONES SET MENSAJE='Notificacion modificada', LEIDA=0, TIPO_NOTIFICACION='RECORDATORIO', ESTADO='PENDIENTE' WHERE NOTIFICACION_ID=7 AND USUARIO_ID=3
+  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.015">
+    <system-err><![CDATA[jun 27, 2025 7:46:15 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_NOTIFICACIONES SET MENSAJE='Notificacion modificada', LEIDA=0, TIPO_NOTIFICACION='RECORDATORIO', ESTADO='PENDIENTE' WHERE NOTIFICACION_ID=9 AND USUARIO_ID=3
 ]]></system-err>
   </testcase>
   <testcase name="testListar" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.007"/>
-  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.007"/>
+  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.005"/>
   <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.NotificacionBOTest" time="0.01">
-    <system-err><![CDATA[jun 27, 2025 2:50:46 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_NOTIFICACIONES SET ESTADO = 'FALLIDO' WHERE NOTIFICACION_ID = 7 AND USUARIO_ID = 3
+    <system-err><![CDATA[jun 27, 2025 7:46:16 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_NOTIFICACIONES SET ESTADO = 'FALLIDO' WHERE NOTIFICACION_ID = 9 AND USUARIO_ID = 3
 ]]></system-err>
   </testcase>
 </testsuite>
