@@ -41,7 +41,7 @@ public class ReporteUtil {
     }
 
     //método para el reporte de Sedes
-    public static byte[] reporteSedes() {
-        return invocarReporte("ReporteChifa", null);
+    public static byte[] reporteSedes(String nombre) {
+        return invocarReporte(nombre, null);
     }
 }

@@ -35,4 +35,11 @@ public class CifradoTest {
         String resultado_esperado = "bryan123";
         assertEquals(resultado, resultado_esperado);
     }
+    @Test
+    public void testDescifrar() {
+        System.out.println("descifrarMD5");
+        String texto = "YGOE2OvoI245rjz/OrNSMg==";
+        String resultado = Cifrado.descifrarMD5(texto);
+        System.out.println(resultado);
+    }
 }
