@@ -1,15 +1,15 @@
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ComentarioBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\FilaEsperaBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\HorarioAtencionBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\HorarioxSedeBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\LocalBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\MesaBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\MotivoCancelacionBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\NotificacionBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ReservaBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ReservaxMesaBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\RolBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\SedeBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\TipoDocumentoBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\TipoMesaBOTest.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\UsuarioBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\MesaBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ReservaBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\FilaEsperaBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\UsuarioBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\HorarioAtencionBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ReservaxMesaBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\SedeBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\TipoMesaBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\RolBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\TipoDocumentoBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\MotivoCancelacionBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\LocalBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\NotificacionBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\ComentarioBOTest.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusiness\src\test\java\pe\edu\pucp\softres\business\HorarioxSedeBOTest.java

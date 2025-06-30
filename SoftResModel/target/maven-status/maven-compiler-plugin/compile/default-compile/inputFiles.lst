@@ -1,29 +1,29 @@
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\CanceladaState.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ComentariosDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ConfirmadaState.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\CredencialesDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\DiaSemana.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoFilaEspera.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoMesa.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoNotificacion.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoReserva.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoReservaState.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\FilaEsperaDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\HorarioAtencionDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\HorariosxSedesDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\LocalDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\MesaDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\MotivosCancelacionDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\NotificacionDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\PendienteState.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReportesClientesDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReportesReservasDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReservaDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReservaxMesasDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\RolDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\SedeDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoDocumentoDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoMesaDTO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoNotificacion.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoReserva.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\UsuariosDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\CanceladaState.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ComentariosDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoReservaState.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\HorarioAtencionDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\CredencialesDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoReserva.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReportesClientesDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\SedeDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoFilaEspera.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\LocalDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoReserva.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\UsuariosDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\HorariosxSedesDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\FilaEsperaDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReservaxMesasDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\MotivosCancelacionDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoNotificacion.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ConfirmadaState.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\NotificacionDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReservaDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\PendienteState.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoMesaDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoNotificacion.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\MesaDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\ReportesReservasDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\EstadoMesa.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\RolDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\TipoDocumentoDTO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResModel\src\main\java\pe\edu\pucp\softres\model\DiaSemana.java

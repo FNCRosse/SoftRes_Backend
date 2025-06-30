@@ -1,4 +1,5 @@
 pe\edu\pucp\softres\business\ComentarioBO.class
+pe\edu\pucp\softres\business\ReporteReservaBO.class
 pe\edu\pucp\softres\business\LocalBO.class
 pe\edu\pucp\softres\business\RolBO.class
 pe\edu\pucp\softres\business\HorarioAtencionBO.class

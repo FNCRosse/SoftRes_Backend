@@ -1,17 +1,17 @@
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\ReservaxMesa.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Mesas.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\TipoDocumento.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Notificaciones.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Rol.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\HorariosAtencion.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Sedes.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\HorarioxSede.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\FilasEspera.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\resources\JakartaEE10Resource.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\TipoMesa.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Reserva.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Comentarios.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Usuario.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\JakartaRestConfiguration.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Local.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\MotivoCancelacion.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Usuario.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Notificaciones.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\TipoDocumento.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\FilasEspera.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Local.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\MotivoCancelacion.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Mesas.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\resources\JakartaEE10Resource.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\ReservaxMesa.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\TipoMesa.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\HorarioxSede.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\HorariosAtencion.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\JakartaRestConfiguration.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Sedes.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Comentarios.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Rol.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessServidorWS\src\main\java\pe\edu\pucp\softres\services\Reserva.java

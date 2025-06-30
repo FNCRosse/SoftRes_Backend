@@ -5,12 +5,14 @@
 package pe.edu.pucp.softres.services;
 
 import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
 import pe.edu.pucp.softres.reports.ReporteUtil;
 
 /**
  *
  * @author Fernando
  */
+@WebService(serviceName = "reporteCliente")
 public class ReporteCliente {
     @WebMethod(operationName = "reporteCliente")
     public byte[] reporteClientes() {

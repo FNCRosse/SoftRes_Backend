@@ -1,15 +1,15 @@
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ComentarioBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\FilaEsperaBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\HorarioAtencionBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\HorarioxSedeBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\LocalBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\MesaBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\MotivoCancelacionBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\NotificacionBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ReservaBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ReservaxMesaBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\RolBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\SedeBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\TipoDocumentoBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\TipoMesaBO.java
-A:\Java\tarea\v12\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\UsuarioBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\RolBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\UsuarioBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\MotivoCancelacionBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\FilaEsperaBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\MesaBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ReservaBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\TipoDocumentoBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\NotificacionBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\LocalBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\SedeBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\HorarioxSedeBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\HorarioAtencionBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\TipoMesaBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ComentarioBO.java
+D:\Fernando\UNIVERSIDAD\7 CICLO\PROGRA3\TA\TA_GitHUB\SoftRes_Backend\SoftResBusinessClienteWS\src\main\java\pe\edu\pucp\softres\bo\client\ReservaxMesaBO.java
