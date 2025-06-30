@@ -16,6 +16,7 @@ import jakarta.ws.rs.core.Response;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import pe.edu.pucp.softres.business.UsuarioBO;
 import pe.edu.pucp.softres.model.CredencialesDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
@@ -88,7 +89,7 @@ public class Usuario {
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
-    
+
     @POST
     @Path("login")
     public Response login(CredencialesDTO credenciales) {
@@ -104,5 +105,19 @@ public class Usuario {
         }
 
         return Response.ok(user).build();
+    }
+
+    @POST
+    @Path("ExisteDoc")
+    public Response ValidarDocumentoUnico(Map<String, String> json) {
+        try {
+            String numDocumento = json.get("numDocumento");
+        boolean existe = this.usuarioBO.validarDocumentoUnico(numDocumento);
+            return Response.ok().entity(existe).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al validar documento").build();
+        }
     }
 }

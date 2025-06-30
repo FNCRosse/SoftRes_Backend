@@ -14,7 +14,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import pe.edu.pucp.softres.model.CredencialesDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
@@ -109,12 +111,15 @@ public class UsuarioBO {
 
     public Integer insertar(UsuariosDTO usuario) throws JsonProcessingException, IOException, InterruptedException {
         String jsonRequest = this.serializar(usuario);
+        System.out.println("➡ JSON enviado al backend:");
+        System.out.println(jsonRequest);
         this.crearHttpClient();
         this.crearHttpRequestPOST(jsonRequest, null);
         this.enviarRequest();
         UsuariosDTO usuarioDTORespuesta = this.deserializar(UsuariosDTO.class);
         this.cerrarHttpClient();
-
+        System.out.println("⬅ Respuesta recibida del backend:");
+        System.out.println(this.response.body());
         if (response.statusCode() == Response.Status.CREATED.getStatusCode()) {
             return usuarioDTORespuesta.getIdUsuario();
         }
@@ -166,6 +171,7 @@ public class UsuarioBO {
         }
         return 0;
     }
+
     public UsuariosDTO login(CredencialesDTO credenciales) throws IOException, InterruptedException {
         // Serializar el DTO de credenciales
         String jsonRequest = this.mapper.writeValueAsString(credenciales);
@@ -183,4 +189,22 @@ public class UsuarioBO {
 
         return null; // Login fallido (email o contraseña incorrectos)
     }
-} 
+
+    public Boolean ValidarDocumentoUnico(String numDocumento) throws IOException, InterruptedException {
+        Map<String, String> body = new HashMap<>();
+        body.put("numDocumento", numDocumento);
+        String jsonRequest = this.mapper.writeValueAsString(body);
+        System.out.println("➡ JSON enviado al backend:");
+        System.out.println(jsonRequest);
+        this.crearHttpClient();
+        this.crearHttpRequestPOST(jsonRequest, "ExisteDoc");
+        this.enviarRequest();
+        this.cerrarHttpClient();
+        System.out.println("⬅ Respuesta recibida del backend:");
+        System.out.println(this.response.body());
+        if (this.response.statusCode() == Response.Status.OK.getStatusCode()) {
+            return this.mapper.readValue(this.response.body(), Boolean.class);
+        }
+        return false;
+    }
+}

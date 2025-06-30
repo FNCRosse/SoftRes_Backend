@@ -6,7 +6,6 @@ import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
 import java.util.List;
 
-
 public class UsuarioBO {
 
     private UsuarioDAO usuarioDAO;
@@ -36,8 +35,12 @@ public class UsuarioBO {
     public Integer eliminar(UsuariosDTO usuario) {
         return this.usuarioDAO.eliminar(usuario);
     }
+
     public UsuariosDTO login(String email, String contrasenha) {
         return usuarioDAO.obtenerPorEmailYContrasena(email, contrasenha);
     }
-}
 
+    public Boolean validarDocumentoUnico(String numeroDocumento) {
+        return usuarioDAO.validarDocumentoUnico(numeroDocumento);
+    }
+}

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import pe.edu.pucp.softres.bo.client.UsuarioBO;
+import pe.edu.pucp.softres.db.util.Cifrado;
 import pe.edu.pucp.softres.model.CredencialesDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
@@ -25,6 +26,7 @@ public class Usuario {
     public Integer insertarUsuario(UsuariosDTO usuario) throws IOException, InterruptedException {
         usuario.setFechaCreacion(new Date());
         usuario.setEstado(true);
+        usuario.setContrasenha(Cifrado.cifrarMD5(usuario.getContrasenha()));
         return this.usuarioBO.insertar(usuario);
     }
 
@@ -43,6 +45,12 @@ public class Usuario {
         usuario.setFechaModificacion(new Date());
         return this.usuarioBO.modificar(usuario);
     }
+    @WebMethod(operationName = "cambiarcontrasena")
+    public Integer cambiarcontrasena(UsuariosDTO usuario) throws IOException, InterruptedException {
+        usuario.setFechaModificacion(new Date());
+        usuario.setContrasenha(Cifrado.cifrarMD5(usuario.getContrasenha()));
+        return this.usuarioBO.modificar(usuario);
+    }
 
     @WebMethod(operationName = "eliminar")
     public Integer eliminarUsuario(UsuariosDTO usuario) throws IOException, InterruptedException {
@@ -50,8 +58,14 @@ public class Usuario {
         usuario.setEstado(false);// lógica de eliminación lógica como en REST
         return this.usuarioBO.eliminar(usuario);
     }
-        @WebMethod(operationName = "login")
+
+    @WebMethod(operationName = "login")
     public UsuariosDTO loginUsuario(CredencialesDTO credenciales) throws IOException, InterruptedException {
         return this.usuarioBO.login(credenciales);
     }
-} 
+    
+    @WebMethod(operationName = "existeDoc")
+    public Boolean existeDoc(String numDocumento) throws IOException, InterruptedException {
+        return this.usuarioBO.ValidarDocumentoUnico(numDocumento);
+    }
+}

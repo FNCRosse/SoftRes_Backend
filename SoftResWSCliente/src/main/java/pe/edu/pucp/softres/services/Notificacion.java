@@ -33,8 +33,8 @@ public class Notificacion {
     }
 
     @WebMethod(operationName = "obtenerPorId")
-    public NotificacionDTO obtenerNotificacionPorId( Integer notificacionId) throws IOException, InterruptedException {
-        return this.notificacionBO.obtenerPorId(notificacionId);
+    public NotificacionDTO obtenerNotificacionPorId( Integer notificacionId, Integer usuarioID) throws IOException, InterruptedException {
+        return this.notificacionBO.obtenerPorId(notificacionId,usuarioID);
     }
 
     @WebMethod(operationName = "listar")

@@ -10,15 +10,35 @@ package pe.edu.pucp.softres.parametros;
  */
 public class UsuariosParametros {
     private String nombreCompleto;
+    private String numDocumento;
     private Integer idTipoUsuario;
     private Integer idTipoDocumento;
     private Boolean estado;
+    private Boolean esCliente;
     
     public UsuariosParametros(){
         this.nombreCompleto = null;
         this.idTipoUsuario = null;
         this.idTipoDocumento = null;
         this.estado = null;
+        this.numDocumento=null;
+        this.esCliente = null;
+    }
+
+    public Boolean getEsCliente() {
+        return esCliente;
+    }
+
+    public void setEsCliente(Boolean esCliente) {
+        this.esCliente = esCliente;
+    }
+
+    public String getNumDocumento() {
+        return numDocumento;
+    }
+
+    public void setNumDocumento(String numDocumento) {
+        this.numDocumento = numDocumento;
     }
 
     public String getNombreCompleto() {

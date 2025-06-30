@@ -35,7 +35,6 @@ public class HorarioAtencion {
         horario.setFechaCreacion(new Date());
         horario.setEstado(true);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
         // Convertir horaInicioStr a horaInicio (LocalTime)
         if (horario.getHoraInicioStr() != null && !horario.getHoraInicioStr().isEmpty()) {
             LocalTime horaInicio = LocalTime.parse(horario.getHoraInicioStr(), formatter);
@@ -53,7 +52,6 @@ public class HorarioAtencion {
     @WebMethod(operationName = "obtenerPorId")
     public HorarioAtencionDTO obtenerHorarioPorId(Integer horarioId) throws IOException, InterruptedException {
         HorarioAtencionDTO h = this.horarioBO.obtenerPorId(horarioId);
-
         if (h.getHoraInicio() != null) {
             h.setHoraInicioStr(h.getHoraInicio().toString());
         }
@@ -80,21 +78,23 @@ public class HorarioAtencion {
 
     @WebMethod(operationName = "modificar")
     public Integer modificarHorario(HorarioAtencionDTO horario) throws IOException, InterruptedException {
-        horario.setFechaModificacion(new Date());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-        // Convertir horaInicioStr a horaInicio (LocalTime)
-        if (horario.getHoraInicioStr() != null && !horario.getHoraInicioStr().isEmpty()) {
-            LocalTime horaInicio = LocalTime.parse(horario.getHoraInicioStr(), formatter);
-            horario.setHoraInicio(horaInicio);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            // Convertir horaInicioStr a horaInicio (LocalTime)
+            if (horario.getHoraInicioStr() != null && !horario.getHoraInicioStr().isEmpty()) {
+                LocalTime horaInicio = LocalTime.parse(horario.getHoraInicioStr(), formatter);
+                horario.setHoraInicio(horaInicio);
+            }
+            // Convertir horaFinStr a horaFin (LocalTime)
+            if (horario.getHoraFinStr() != null && !horario.getHoraFinStr().isEmpty()) {
+                LocalTime horaFin = LocalTime.parse(horario.getHoraFinStr(), formatter);
+                horario.setHoraFin(horaFin);
+            }
+            return this.horarioBO.modificar(horario);
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException("Error en modificarHorario: " + e.getMessage());
         }
-
-        // Convertir horaFinStr a horaFin (LocalTime)
-        if (horario.getHoraFinStr() != null && !horario.getHoraFinStr().isEmpty()) {
-            LocalTime horaFin = LocalTime.parse(horario.getHoraFinStr(), formatter);
-            horario.setHoraFin(horaFin);
-        }
-        return this.horarioBO.modificar(horario);
     }
 
     @WebMethod(operationName = "eliminar")

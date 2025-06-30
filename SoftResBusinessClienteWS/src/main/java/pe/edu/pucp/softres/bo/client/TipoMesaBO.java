@@ -47,7 +47,7 @@ public class TipoMesaBO {
             urlPOST = urlPOST.concat("/" + urlExtra);
         }
         this.request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(urlPOST))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonRequest))
                 .build();
@@ -71,7 +71,7 @@ public class TipoMesaBO {
             urlPUT = urlPUT.concat("/" + urlExtra);
         }
         this.request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(urlPUT))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(jsonRequest))
                 .build();
@@ -79,13 +79,6 @@ public class TipoMesaBO {
 
     private void enviarRequest() throws IOException, InterruptedException {
         this.response = this.client.send(this.request, HttpResponse.BodyHandlers.ofString());
-    }
-
-    private TipoMesaDTO crearDTO(Integer idTipoMesa,String nombre) {
-        TipoMesaDTO tipoMesaDTO = new TipoMesaDTO();
-        tipoMesaDTO.setIdTipoMesa(idTipoMesa);
-        tipoMesaDTO.setNombre(nombre);
-        return tipoMesaDTO;
     }
 
     private String serializar(TipoMesaDTO tipoMesaDTO) throws JsonProcessingException {

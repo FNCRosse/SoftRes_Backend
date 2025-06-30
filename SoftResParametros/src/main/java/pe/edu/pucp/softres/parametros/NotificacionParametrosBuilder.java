@@ -13,11 +13,13 @@ public class NotificacionParametrosBuilder {
     private Integer idUsuario;
     private TipoNotificacion tipoNotificacion;
     private EstadoNotificacion estado;
+    private Boolean esLeida;
     
     public NotificacionParametrosBuilder(){
         idUsuario = null;
         tipoNotificacion = null;
         estado = null;
+        esLeida = null;
     }
     
     public NotificacionParametrosBuilder setIdUsuario(Integer idUsuario){
@@ -25,6 +27,10 @@ public class NotificacionParametrosBuilder {
         return this;
     }
     
+    public NotificacionParametrosBuilder setEsLeida(Boolean esLeida){
+        this.esLeida = esLeida;
+        return this;
+    }
     public NotificacionParametrosBuilder setTipoNotificacion(TipoNotificacion tipoNotificacion){
         this.tipoNotificacion = tipoNotificacion;
         return this;
@@ -40,6 +46,7 @@ public class NotificacionParametrosBuilder {
         parametros.setIdUsuario(this.idUsuario);
         parametros.setTipoNotificacion(this.tipoNotificacion);
         parametros.setEstado(this.estado);
+        parametros.setEsLeida(esLeida);
         return parametros;
     }
 }

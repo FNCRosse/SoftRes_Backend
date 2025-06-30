@@ -130,6 +130,7 @@ public class NotificacionDAOImpl extends DAOImplBase implements NotificacionDAO 
                 setIdUsuario(notificacionParametro.getIdUsuario()).
                 setTipoNotificacion(notificacionParametro.getTipoNotificacion()).
                 setEstado(notificacionParametro.getEstado()).
+                setEsLeida(notificacionParametro.getEsLeida()).
                 buildNotificacionParametros();
         String sql = this.generarSQLParaListar();
         return (ArrayList<NotificacionDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListar, parametros);
@@ -147,6 +148,7 @@ public class NotificacionDAOImpl extends DAOImplBase implements NotificacionDAO 
         sql = sql.concat("INNER JOIN RES_USUARIOS u ON n.usuario_id = u.usuario_id ");
         sql = sql.concat("WHERE (n.ESTADO = ? OR ? is NULL) AND "); // Estado
         sql = sql.concat("(u.USUARIO_ID = ? OR ?  IS NULL) AND "); // Usuario
+        sql = sql.concat("(n.LEIDA = ? OR ?  IS NULL) AND "); // Leida
         sql = sql.concat("(n.TIPO_NOTIFICACION = ? OR ? is NULL) "); // Tipo de notificacion
         sql = sql.concat(" ORDER BY n.ESTADO DESC, n.NOTIFICACION_ID ASC, n.LEIDA DESC ");
         return sql;
@@ -190,13 +192,21 @@ public class NotificacionDAOImpl extends DAOImplBase implements NotificacionDAO 
                 this.statement.setNull(3, java.sql.Types.INTEGER);
                 this.statement.setNull(4, java.sql.Types.INTEGER);
             }
+            
+            if (parametros.getEsLeida()!= null) {
+                this.statement.setBoolean(5, parametros.getEsLeida());
+                this.statement.setBoolean(6, parametros.getEsLeida());
+            } else {
+                this.statement.setNull(5, java.sql.Types.BOOLEAN);
+                this.statement.setNull(6, java.sql.Types.BOOLEAN);
+            }
 
             if (parametros.getTipoNotificacion() != null) {
-                this.statement.setString(5, parametros.getTipoNotificacion().name());
-                this.statement.setString(6, parametros.getTipoNotificacion().name());
+                this.statement.setString(7, parametros.getTipoNotificacion().name());
+                this.statement.setString(8, parametros.getTipoNotificacion().name());
             } else {
-                this.statement.setNull(5, java.sql.Types.VARCHAR);
-                this.statement.setNull(6, java.sql.Types.VARCHAR);
+                this.statement.setNull(7, java.sql.Types.VARCHAR);
+                this.statement.setNull(8, java.sql.Types.VARCHAR);
             }
         } catch (SQLException ex) {
             Logger.getLogger(NotificacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

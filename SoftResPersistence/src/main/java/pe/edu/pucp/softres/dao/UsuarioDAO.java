@@ -17,5 +17,6 @@ public interface UsuarioDAO {
     List<UsuariosDTO> listar(UsuariosParametros parametros);
     Integer modificar(UsuariosDTO usuario);
     Integer eliminar(UsuariosDTO usuarioId);
-     UsuariosDTO obtenerPorEmailYContrasena(String email, String contrasenha);
+    UsuariosDTO obtenerPorEmailYContrasena(String email, String contrasenha);
+    Boolean validarDocumentoUnico(String numDocumento); 
 }

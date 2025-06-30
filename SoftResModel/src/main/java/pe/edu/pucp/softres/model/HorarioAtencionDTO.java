@@ -5,6 +5,7 @@
 package pe.edu.pucp.softres.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
@@ -98,14 +99,15 @@ public class HorarioAtencionDTO {
         this.diaSemana = diaSemana;
     }
 
+    @XmlTransient
     public LocalTime getHoraInicio() {
         return horaInicio;
     }
-
+    
     public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
-
+    @XmlTransient
     public LocalTime getHoraFin() {
         return horaFin;
     }

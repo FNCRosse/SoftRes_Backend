@@ -145,7 +145,7 @@ public class HorarioAtencionDAOImpl extends DAOImplBase implements HorarioAtenci
         }
 
         if (this.horario.getFechaModificacion() != null) {
-            this.statement.setObject(8,this.horario.getFechaModificacion());
+            this.statement.setObject(8, this.horario.getFechaModificacion());
         } else {
             this.statement.setNull(8, java.sql.Types.DATE);
         }
@@ -187,7 +187,7 @@ public class HorarioAtencionDAOImpl extends DAOImplBase implements HorarioAtenci
         Time timeHora_Fin = this.resultSet.getTime("HORA_FIN");
         this.horario.setHoraFin(timeHora_Fin != null ? timeHora_Fin.toLocalTime() : null);
 
-        this.horario.setEsFeriado(this.resultSet.getBoolean("HORARIO_ID"));
+        this.horario.setEsFeriado(this.resultSet.getBoolean("ES_FERIADO"));
 
         this.horario.setEstado(this.resultSet.getBoolean("ESTADO"));
 
