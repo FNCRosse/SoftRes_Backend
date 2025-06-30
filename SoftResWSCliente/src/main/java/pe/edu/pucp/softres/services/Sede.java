@@ -50,8 +50,4 @@ public class Sede {
         sede.setEstado(false);// lógica de eliminación lógica como en REST
         return this.sedeBO.eliminar(sede);
     }
-    @WebMethod(operationName = "reporteSedes")
-    public byte[] reporteVendedores() {
-        return ReporteUtil.reporteSedes();
-    }
 }
