@@ -119,9 +119,17 @@ public class NotificacionBO {
         return 0;
     }
     
-    public NotificacionDTO obtenerPorId(Integer notificacionId) throws IOException, InterruptedException {
+    public NotificacionDTO obtenerPorId(Integer notificacionId,Integer usuarioID) throws IOException, InterruptedException {
         this.crearHttpClient();
-        this.crearHttpRequestGET(notificacionId);
+        String urlGET = this.url;
+        if (notificacionId != null && usuarioID !=null) {
+            urlGET = urlGET.concat("/" + notificacionId);
+            urlGET = urlGET.concat("/" + usuarioID);
+        }
+        this.request = HttpRequest.newBuilder()
+                .uri(URI.create(urlGET))
+                .GET()
+                .build();
         this.enviarRequest();
         this.cerrarHttpClient();
         NotificacionDTO notificacionDTORespuesta = this.deserializar(NotificacionDTO.class);
