@@ -1,8 +1,10 @@
 package pe.edu.pucp.softres.daoImp;
 //adiwdmoiwdma
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.ZoneId;
@@ -13,6 +15,7 @@ import java.util.logging.Logger;
 import pe.edu.pucp.softres.dao.UsuarioDAO;
 import pe.edu.pucp.softres.daoImp.util.Columna;
 import pe.edu.pucp.softres.daoImp.util.TipoDato;
+import pe.edu.pucp.softres.db.DBManager;
 import pe.edu.pucp.softres.model.RolDTO;
 import pe.edu.pucp.softres.model.TipoDocumentoDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
@@ -118,6 +121,17 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         this.statement.setInt(1, this.usuario.getIdUsuario());
     }
 
+    private boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int columns = rsmd.getColumnCount();
+        for (int x = 1; x <= columns; x++) {
+            if (columnName.equalsIgnoreCase(rsmd.getColumnName(x))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.usuario = new UsuariosDTO();
@@ -126,6 +140,9 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         // Crear objetos relacionados y asignar
         RolDTO rol = new RolDTO();
         rol.setIdRol(this.resultSet.getInt("ROL_ID"));
+        if (hasColumn(this.resultSet, "NOMBRE_ROL")) {
+            rol.setNombre(this.resultSet.getString("NOMBRE_ROL"));
+        }
         this.usuario.setRol(rol);
 
         TipoDocumentoDTO tipoDoc = new TipoDocumentoDTO();
@@ -351,42 +368,68 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
 
     @Override
     public UsuariosDTO obtenerPorEmailYContrasena(String email, String contrasenha) {
-        UsuariosDTO usuario = null;
-
+        UsuariosDTO usuarioEncontrado = null;
+        Connection conn = null;
+        PreparedStatement stmt = null; 
+        ResultSet rs = null;
         try {
             String contrasenhaCifrada = Cifrado.cifrarMD5(contrasenha);
-            this.abrirConexion();
-            String sql = "SELECT * FROM RES_USUARIOS WHERE EMAIL = ? AND CONTRASENA = ? AND ESTADO = 1";
-            this.colocarSQLenStatement(sql);
-            this.statement.setString(1, email);
-            this.statement.setString(2, contrasenhaCifrada);
+            conn = DBManager.getInstance().getConnection();
+            String sql = "SELECT u.*, r.NOMBRE as NOMBRE_ROL "
+                    + "FROM RES_USUARIOS u "
+                    + "INNER JOIN RES_ROLES r ON u.ROL_ID = r.ROL_ID "
+                    + "WHERE u.EMAIL = ? AND u.CONTRASENA = ? AND u.ESTADO = 1";
 
-            this.resultSet = this.statement.executeQuery();
-
-            if (this.resultSet.next()) {
-                this.instanciarObjetoDelResultSet();
-                usuario = this.usuario;
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, contrasenhaCifrada);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                usuarioEncontrado = new UsuariosDTO();
+                usuarioEncontrado.setIdUsuario(rs.getInt("USUARIO_ID"));
+                RolDTO rol = new RolDTO();
+                rol.setIdRol(rs.getInt("ROL_ID"));
+                rol.setNombre(rs.getString("NOMBRE_ROL")); 
+                usuarioEncontrado.setRol(rol);
+                TipoDocumentoDTO tipoDoc = new TipoDocumentoDTO();
+                tipoDoc.setIdTipoDocumento(rs.getInt("TIPO_DOC_ID"));
+                usuarioEncontrado.setTipoDocumento(tipoDoc);
+                usuarioEncontrado.setNombreComp(rs.getString("NOMBRE_COMP"));
+                usuarioEncontrado.setNumeroDocumento(rs.getString("NUMERO_DOC"));
+                usuarioEncontrado.setContrasenha(rs.getString("CONTRASENA"));
+                usuarioEncontrado.setEmail(rs.getString("EMAIL"));
+                usuarioEncontrado.setTelefono(rs.getString("TELEFONO"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, "Error en obtenerPorEmailYContrasena", ex);
         } finally {
             try {
-                this.cerrarConexion();
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {}
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {}
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {}
         }
 
-        return usuario;
+        return usuarioEncontrado;
     }
 
     @Override
     public Boolean validarDocumentoUnico(String numeroDocumento) {
         boolean existe = false;
         try {
-            this.abrirConexion(); 
+            this.abrirConexion();
             String sql = "SELECT COUNT(*) AS TOTAL FROM RES_USUARIOS WHERE NUMERO_DOC = ? AND ESTADO = 1";
-            this.colocarSQLenStatement(sql); 
+            this.colocarSQLenStatement(sql);
             this.statement.setString(1, numeroDocumento);
             this.resultSet = this.statement.executeQuery();
 

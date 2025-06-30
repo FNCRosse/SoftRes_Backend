@@ -16,11 +16,21 @@ public class NotificacionParametros {
     private Integer idUsuario;
     private TipoNotificacion tipoNotificacion;
     private EstadoNotificacion estado;
+    private Boolean esLeida;
     
     public NotificacionParametros(){
         this.idUsuario = null;
         this.tipoNotificacion = null;
         this.estado = null;
+        this.esLeida = null;
+    }
+
+    public Boolean getEsLeida() {
+        return esLeida;
+    }
+
+    public void setEsLeida(Boolean esLeida) {
+        this.esLeida = esLeida;
     }
     
     public Integer getIdUsuario(){
