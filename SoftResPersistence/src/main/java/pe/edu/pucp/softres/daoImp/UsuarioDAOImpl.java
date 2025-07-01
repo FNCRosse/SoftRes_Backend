@@ -448,4 +448,28 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         return existe;
     }
 
+    @Override
+    public Boolean validarEmailUnico(String email) {
+        boolean existe = false;
+        try {
+            this.abrirConexion();
+            String sql = "SELECT COUNT(*) AS TOTAL FROM RES_USUARIOS WHERE EMAIL = ? AND ESTADO = 1";
+            this.colocarSQLenStatement(sql);
+            this.statement.setString(1, email);
+            this.resultSet = this.statement.executeQuery();
+
+            if (this.resultSet.next()) {
+                existe = this.resultSet.getInt("TOTAL") > 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return existe;
+    }
 }

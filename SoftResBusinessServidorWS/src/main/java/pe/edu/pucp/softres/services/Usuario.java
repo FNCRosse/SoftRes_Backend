@@ -120,4 +120,17 @@ public class Usuario {
                     .entity("Error al validar documento").build();
         }
     }
+    @POST
+    @Path("ExisteEmail")
+    public Response ValidarEmailUnico(Map<String, String> json) {
+        try {
+            String email = json.get("email");
+        boolean existe = this.usuarioBO.validarEmailUnico(email);
+            return Response.ok().entity(existe).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al validar documento").build();
+        }
+    }
 }

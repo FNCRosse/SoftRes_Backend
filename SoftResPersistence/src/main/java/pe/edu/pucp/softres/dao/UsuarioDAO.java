@@ -19,4 +19,5 @@ public interface UsuarioDAO {
     Integer eliminar(UsuariosDTO usuarioId);
     UsuariosDTO obtenerPorEmailYContrasena(String email, String contrasenha);
     Boolean validarDocumentoUnico(String numDocumento); 
+    Boolean validarEmailUnico(String email); 
 }

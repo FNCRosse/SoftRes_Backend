@@ -118,8 +118,14 @@ public class UsuarioBOTest {
         String email = "juan.pérez@mail.com";// ya esta en mi BD
         String contrasenha = "clave123";
         UsuariosDTO logeado = this.usuarioBO.login(email,contrasenha);
-        
         assertNotNull(logeado);
+    }
+    @Test
+    @Order(8)
+    public void testExisteEmail(){
+        String email = "juan.pérez@mail.com";// ya esta en mi BD
+        Boolean encontrado = this.usuarioBO.validarEmailUnico(email);
+        assertTrue(encontrado);
     }
 }
 

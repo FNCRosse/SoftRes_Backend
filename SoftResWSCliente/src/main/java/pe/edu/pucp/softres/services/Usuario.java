@@ -68,4 +68,9 @@ public class Usuario {
     public Boolean existeDoc(String numDocumento) throws IOException, InterruptedException {
         return this.usuarioBO.ValidarDocumentoUnico(numDocumento);
     }
+    
+    @WebMethod(operationName = "existeEmail")
+    public Boolean existeEmail (String email) throws IOException, InterruptedException {
+        return this.usuarioBO.ValidarEmailUnico(email);
+    }
 }
