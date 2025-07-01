@@ -2,10 +2,7 @@ package pe.edu.pucp.softres.bo.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URI;
@@ -30,7 +27,7 @@ public class ReservaBO {
     private HttpResponse<String> response;
 
     public ReservaBO() {
-        this.url = "http://localhost:8080/SoftVenBusinessServidorWS/resources/Reserva";
+        this.url = "http://localhost:8080/SoftResBusinessServidorWS/resources/Reserva";
         this.mapper = new ObjectMapper();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         this.mapper.setDateFormat(sdf);
