@@ -10,15 +10,11 @@ import pe.edu.pucp.softres.reports.ReporteUtil;
 
 /**
  *
- * @author Fernando
+ * @author BryanGnr
  */
-public class ReporteReserva {
-    public ReporteReserva(){
-        
-    }
-    
-    @WebMethod(operationName = "reporteReserva")
-    public byte[] reporteReserva() {
-        return ReporteUtil.reporte("ReporteReserva");
+public class ReporteCliente {
+    @WebMethod(operationName = "reporteCliente")
+    public byte[] reporteClientes() {
+        return ReporteUtil.reporte("Reporte_Cliente");
     }
 }
