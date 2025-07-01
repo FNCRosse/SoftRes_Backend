@@ -43,4 +43,7 @@ public class UsuarioBO {
     public Boolean validarDocumentoUnico(String numeroDocumento) {
         return usuarioDAO.validarDocumentoUnico(numeroDocumento);
     }
+    public Boolean validarEmailUnico(String email) {
+        return usuarioDAO.validarEmailUnico(email);
+    }
 }

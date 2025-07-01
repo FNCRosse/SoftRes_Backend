@@ -111,15 +111,11 @@ public class UsuarioBO {
 
     public Integer insertar(UsuariosDTO usuario) throws JsonProcessingException, IOException, InterruptedException {
         String jsonRequest = this.serializar(usuario);
-        System.out.println("➡ JSON enviado al backend:");
-        System.out.println(jsonRequest);
         this.crearHttpClient();
         this.crearHttpRequestPOST(jsonRequest, null);
         this.enviarRequest();
         UsuariosDTO usuarioDTORespuesta = this.deserializar(UsuariosDTO.class);
         this.cerrarHttpClient();
-        System.out.println("⬅ Respuesta recibida del backend:");
-        System.out.println(this.response.body());
         if (response.statusCode() == Response.Status.CREATED.getStatusCode()) {
             return usuarioDTORespuesta.getIdUsuario();
         }
@@ -194,14 +190,23 @@ public class UsuarioBO {
         Map<String, String> body = new HashMap<>();
         body.put("numDocumento", numDocumento);
         String jsonRequest = this.mapper.writeValueAsString(body);
-        System.out.println("➡ JSON enviado al backend:");
-        System.out.println(jsonRequest);
         this.crearHttpClient();
         this.crearHttpRequestPOST(jsonRequest, "ExisteDoc");
         this.enviarRequest();
         this.cerrarHttpClient();
-        System.out.println("⬅ Respuesta recibida del backend:");
-        System.out.println(this.response.body());
+        if (this.response.statusCode() == Response.Status.OK.getStatusCode()) {
+            return this.mapper.readValue(this.response.body(), Boolean.class);
+        }
+        return false;
+    }
+    public Boolean ValidarEmailUnico(String email) throws IOException, InterruptedException {
+        Map<String, String> body = new HashMap<>();
+        body.put("email", email);
+        String jsonRequest = this.mapper.writeValueAsString(body);
+        this.crearHttpClient();
+        this.crearHttpRequestPOST(jsonRequest, "ExisteEmail");
+        this.enviarRequest();
+        this.cerrarHttpClient();
         if (this.response.statusCode() == Response.Status.OK.getStatusCode()) {
             return this.mapper.readValue(this.response.body(), Boolean.class);
         }
