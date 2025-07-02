@@ -4,16 +4,16 @@
  */
 package pe.edu.pucp.softres.daoImp;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.sql.CallableStatement;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import pe.edu.pucp.softres.daoImp.util.Columna;
 import pe.edu.pucp.softres.daoImp.util.TipoOperacion;
 import pe.edu.pucp.softres.db.DBManager;
@@ -287,7 +287,7 @@ public abstract class DAOImplBase {
     public Integer retornarUltimoAutoGenerado() {
         Integer resultado = null;
         try {
-            String sql = DBManager.getInstance().retornarSQLParaUltimoAutoGenerado();
+            String sql = "SELECT LAST_INSERT_ID() as id";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {

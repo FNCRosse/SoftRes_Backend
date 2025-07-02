@@ -12,7 +12,7 @@ import pe.edu.pucp.softres.model.ReservaxMesasDTO;
  * @author Rosse
  */
 public interface ReservaxMesaDAO {
-    Integer insertar(ReservaxMesasDTO rxm);
+    Integer insertar(ReservaxMesasDTO reservaxmesas);
     List<ReservaxMesasDTO> listar(Integer idReserva);
-    Integer eliminar(ReservaxMesasDTO rxm);
+    Integer eliminar(ReservaxMesasDTO reservaxmesas);
 }

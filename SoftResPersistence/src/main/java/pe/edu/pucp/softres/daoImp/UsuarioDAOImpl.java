@@ -1,5 +1,4 @@
 package pe.edu.pucp.softres.daoImp;
-//adiwdmoiwdma
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,21 +6,20 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import pe.edu.pucp.softres.dao.UsuarioDAO;
 import pe.edu.pucp.softres.daoImp.util.Columna;
 import pe.edu.pucp.softres.daoImp.util.TipoDato;
 import pe.edu.pucp.softres.db.DBManager;
+import pe.edu.pucp.softres.db.util.Cifrado;
 import pe.edu.pucp.softres.model.RolDTO;
 import pe.edu.pucp.softres.model.TipoDocumentoDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.parametros.UsuariosParametros;
 import pe.edu.pucp.softres.parametros.UsuariosParametrosBuilder;
-import pe.edu.pucp.softres.db.util.Cifrado;
 
 /**
  *
@@ -140,13 +138,19 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         // Crear objetos relacionados y asignar
         RolDTO rol = new RolDTO();
         rol.setIdRol(this.resultSet.getInt("ROL_ID"));
-        if (hasColumn(this.resultSet, "NOMBRE_ROL")) {
-            rol.setNombre(this.resultSet.getString("NOMBRE_ROL"));
+        if (hasColumn(this.resultSet, "ROL_NOMBRE")) {
+            rol.setNombre(this.resultSet.getString("ROL_NOMBRE"));
+        }
+        if (hasColumn(this.resultSet, "ES_CLIENTE")) {
+            rol.setEsCliente(this.resultSet.getBoolean("ES_CLIENTE"));
         }
         this.usuario.setRol(rol);
 
         TipoDocumentoDTO tipoDoc = new TipoDocumentoDTO();
         tipoDoc.setIdTipoDocumento(this.resultSet.getInt("TIPO_DOC_ID"));
+        if (hasColumn(this.resultSet, "TIPO_DOC_NOMBRE")) {
+            tipoDoc.setNombre(this.resultSet.getString("TIPO_DOC_NOMBRE"));
+        }
         this.usuario.setTipoDocumento(tipoDoc);
 
         this.usuario.setNombreComp(this.resultSet.getString("NOMBRE_COMP"));
@@ -181,6 +185,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         RolDTO rol = new RolDTO();
         rol.setIdRol(this.resultSet.getInt("ROL_ID"));
         rol.setNombre(this.resultSet.getString("ROL_NOMBRE"));
+        rol.setEsCliente(this.resultSet.getBoolean("ES_CLIENTE"));
         this.usuario.setRol(rol);
 
         TipoDocumentoDTO tipoDoc = new TipoDocumentoDTO();
@@ -235,6 +240,34 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
         this.usuario.setIdUsuario(id);
         super.obtenerPorId();
         return this.usuario;
+    }
+
+    @Override
+    protected String generarSQLParaObtenerPorId() {
+        String sql = "SELECT u.USUARIO_ID, ";
+        sql += "u.ROL_ID, ";
+        sql += "r.NOMBRE AS ROL_NOMBRE, ";
+        sql += "r.ES_CLIENTE AS ES_CLIENTE, ";
+        sql += "u.NOMBRE_COMP, ";
+        sql += "u.TIPO_DOC_ID, ";
+        sql += "t.NOMBRE AS TIPO_DOC_NOMBRE, ";
+        sql += "u.NUMERO_DOC, ";
+        sql += "u.EMAIL, ";
+        sql += "u.CONTRASENA, ";
+        sql += "u.TELEFONO, ";
+        sql += "u.SUELDO, ";
+        sql += "u.FECHA_CONTRATACION, ";
+        sql += "u.CANT_RESERVAS, ";
+        sql += "u.ESTADO, ";
+        sql += "u.FECHA_CREACION, ";
+        sql += "u.USUARIO_CREACION, ";
+        sql += "u.FECHA_MODIFICACION, ";
+        sql += "u.USUARIO_MODIFICACION ";
+        sql += "FROM RES_USUARIOS u ";
+        sql += "INNER JOIN RES_ROLES r ON u.ROL_ID = r.ROL_ID ";
+        sql += "INNER JOIN RES_TIPO_DOCUMENTOS t ON u.TIPO_DOC_ID = t.TIPO_DOC_ID ";
+        sql += "WHERE u.USUARIO_ID = ?";
+        return sql;
     }
 
     @Override
@@ -363,7 +396,9 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO {
 
     @Override
     protected String generarSQLParaEliminacion() {
-        return super.generarSQLParaEliminacion();
+        // Eliminación lógica: actualizar estado en lugar de eliminar
+        String sql = "UPDATE RES_USUARIOS SET ESTADO = ?, FECHA_MODIFICACION = ?, USUARIO_MODIFICACION = ? WHERE USUARIO_ID = ?";
+        return sql;
     }
 
     @Override

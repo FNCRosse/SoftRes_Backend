@@ -20,6 +20,7 @@ import pe.edu.pucp.softres.model.EstadoMesa;
 import pe.edu.pucp.softres.model.LocalDTO;
 import pe.edu.pucp.softres.model.TipoMesaDTO;
 import pe.edu.pucp.softres.parametros.MesaParametrosBuilder;
+import pe.edu.pucp.softres.db.DBManager;
 
 /**
  *
@@ -328,28 +329,44 @@ public class MesaDAOImpl extends DAOImplBase implements MesaDAO {
                 = "SELECT m.MESA_ID, m.LOCAL_ID, m.TMESA_ID, m.NUMEROMESA, m.CAPACIDAD, m.ESTADO, m.X, m.Y, "
                 + "m.FECHA_CREACION, m.USUARIO_CREACION, m.FECHA_MODIFICACION, m.USUARIO_MODIFICACION "
                 + "FROM RES_MESAS m "
-                + "WHERE m.ESTADO = 'ACTIVO' "
+                + "WHERE m.ESTADO = 'DISPONIBLE' "
                 + "AND m.LOCAL_ID = ? "
+                + "AND m.TMESA_ID = ? "
                 + "AND m.MESA_ID NOT IN ( "
                 + "  SELECT rxm.MESA_ID "
-                + "  FROM RES_RESERVAS_X_MESAS rxm "
+                + "  FROM RES_RESERVAS_x_MESAS rxm "
                 + "  JOIN RES_RESERVAS r ON r.RESERVA_ID = rxm.RESERVA_ID "
-                + "  WHERE r.FECHA_HORA_REGISTRO = ? "
+                + "  WHERE r.FECHA_HORA_REGISTRO BETWEEN ? AND ? "
+                + "  AND r.ESTADO IN ('PENDIENTE', 'CONFIRMADA') "
                 + ") "
                 + "ORDER BY m.CAPACIDAD ASC";
 
         String sqlInsertarAsignacion
                 = "INSERT INTO RES_RESERVAS_X_MESAS (RESERVA_ID, MESA_ID) VALUES (?, ?)";
+        
+        String sqlActualizarEstadoMesa
+                = "UPDATE RES_MESAS SET ESTADO = 'RESERVADA' WHERE MESA_ID = ?";
 
-        try (Connection conn = this.dataSource.getConnection(); PreparedStatement stmtMesas = conn.prepareStatement(sqlSeleccionarMesas); PreparedStatement stmtInsert = conn.prepareStatement(sqlInsertarAsignacion)) {
+        try (Connection conn = DBManager.getInstance().getConnection(); 
+             PreparedStatement stmtMesas = conn.prepareStatement(sqlSeleccionarMesas); 
+             PreparedStatement stmtInsert = conn.prepareStatement(sqlInsertarAsignacion);
+             PreparedStatement stmtUpdate = conn.prepareStatement(sqlActualizarEstadoMesa)) {
+
+            // Calcular ventana de tiempo (2 horas antes y después para evitar conflictos)
+            long dosHoras = 2 * 60 * 60 * 1000; // 2 horas en milisegundos
+            Timestamp fechaInicio = new Timestamp(reserva.getFechaHoraRegistro().getTime() - dosHoras);
+            Timestamp fechaFin = new Timestamp(reserva.getFechaHoraRegistro().getTime() + dosHoras);
 
             stmtMesas.setInt(1, reserva.getLocal().getIdLocal());
-            stmtMesas.setObject(2, reserva.getFecha_Hora());
+            stmtMesas.setInt(2, reserva.getTipoMesa().getIdTipoMesa());
+            stmtMesas.setTimestamp(3, fechaInicio);
+            stmtMesas.setTimestamp(4, fechaFin);
 
             ResultSet rs = stmtMesas.executeQuery();
-            int personasPendientes = reserva.getCantidad_personas();
+            int personasPendientes = reserva.getCantidadPersonas();
+            int mesasNecesarias = reserva.getNumeroMesas() != null ? reserva.getNumeroMesas() : 1;
 
-            while (rs.next() && personasPendientes > 0) {
+            while (rs.next() && personasPendientes > 0 && mesasAsignadas.size() < mesasNecesarias) {
                 MesaDTO mesa = new MesaDTO();
                 mesa.setIdMesa(rs.getInt("MESA_ID"));
 
@@ -383,9 +400,15 @@ public class MesaDAOImpl extends DAOImplBase implements MesaDAO {
 
                 mesa.setUsuarioModificacion(rs.getString("USUARIO_MODIFICACION"));
 
+                // Insertar en tabla de relación
                 stmtInsert.setInt(1, reserva.getIdReserva());
                 stmtInsert.setInt(2, mesa.getIdMesa());
                 stmtInsert.executeUpdate();
+                
+                // Actualizar estado de la mesa a RESERVADA
+                stmtUpdate.setInt(1, mesa.getIdMesa());
+                stmtUpdate.executeUpdate();
+                mesa.setEstado(EstadoMesa.RESERVADA);
 
                 personasPendientes -= mesa.getCapacidad();
                 mesasAsignadas.add(mesa);

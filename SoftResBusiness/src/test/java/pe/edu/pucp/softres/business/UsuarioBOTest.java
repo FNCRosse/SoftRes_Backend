@@ -1,15 +1,19 @@
-
 package pe.edu.pucp.softres.business;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
 import pe.edu.pucp.softres.db.util.Cifrado;
 import pe.edu.pucp.softres.model.RolDTO;
 import pe.edu.pucp.softres.model.TipoDocumentoDTO;
@@ -43,9 +47,22 @@ public class UsuarioBOTest {
         usuario.setRol(rol);
         usuario.setTipoDocumento(tipoDoc);
         usuario.setNombreComp("Usuario Test");
-        usuario.setNumeroDocumento("13395077");
+        
+        // Generar valores únicos que respeten las constraints de BD
+        long timestamp = System.currentTimeMillis();
+        
+        // NUMERO_DOC: Solo 8 dígitos numéricos (como los existentes en BD)
+        String uniqueDoc = String.valueOf(timestamp % 100000000L); // Últimos 8 dígitos del timestamp
+        if (uniqueDoc.length() < 8) {
+            uniqueDoc = String.format("%08d", Long.parseLong(uniqueDoc)); // Rellenar con 0s si es menor a 8
+        }
+        
+        // EMAIL: Generar email único pero más corto
+        String uniqueEmail = "test" + (timestamp % 1000000) + "@example.com"; // Solo 6 dígitos para el email
+        
+        usuario.setNumeroDocumento(uniqueDoc);
         usuario.setContrasenha("password123");
-        usuario.setEmail("test6@example.com");
+        usuario.setEmail(uniqueEmail);
         usuario.setTelefono("999999999");
         usuario.setSueldo(130.00);
         usuario.setFechaContratacion(new Date());
@@ -54,9 +71,15 @@ public class UsuarioBOTest {
         usuario.setEstado(true);
         usuario.setFechaCreacion(new Date());
         usuario.setUsuarioCreacion("test_insertar");
+        
+        System.out.println("Intentando insertar usuario con documento: " + uniqueDoc + " y email: " + uniqueEmail);
+        
         UsuariosDTO insertado = this.usuarioBO.insertar(usuario);
         userIdCreado = insertado.getIdUsuario();
-        assertNotNull(userIdCreado);
+        assertNotNull(userIdCreado, "El ID del usuario insertado no debe ser null");
+        assertTrue(userIdCreado > 0, "El ID del usuario debe ser positivo");
+        
+        System.out.println("Usuario insertado exitosamente con ID: " + userIdCreado);
     }
 
     @Test
@@ -71,10 +94,49 @@ public class UsuarioBOTest {
     @Test
     @Order(4)
     public void testListar() {
+        System.out.println("=== Test: Listar Usuarios ===");
+        System.out.println("Buscando usuario con ID: " + userIdCreado);
+        
         UsuariosParametros parametros = new UsuariosParametros();
         List<UsuariosDTO> lista = this.usuarioBO.listar(parametros);
-        assertNotNull(lista);
-        assertTrue(lista.stream().anyMatch(r -> r.getIdUsuario().equals(userIdCreado)));
+        
+        System.out.println("Total usuarios encontrados: " + (lista != null ? lista.size() : "null"));
+        
+        assertNotNull(lista, "La lista de usuarios no debe ser null");
+        
+        if (lista != null && !lista.isEmpty()) {
+            System.out.println("Usuarios en la lista:");
+            for (UsuariosDTO u : lista) {
+                System.out.println("- ID: " + u.getIdUsuario() + ", Nombre: " + u.getNombreComp() + 
+                    ", Estado: " + u.getEstado() + ", Email: " + u.getEmail());
+            }
+            
+            // Verificar si nuestro usuario está en la lista
+            boolean encontrado = lista.stream().anyMatch(r -> r.getIdUsuario().equals(userIdCreado));
+            if (!encontrado) {
+                System.err.println("ERROR: Usuario con ID " + userIdCreado + " NO encontrado en la lista");
+                
+                // Intentar buscar por otros criterios para debugging
+                boolean encontradoPorNombre = lista.stream().anyMatch(r -> "Usuario Test".equals(r.getNombreComp()));
+                System.out.println("¿Encontrado por nombre 'Usuario Test'? " + encontradoPorNombre);
+                
+                // Verificar que el usuario aún existe individual
+                UsuariosDTO usuarioIndividual = this.usuarioBO.obtenerPorId(userIdCreado);
+                if (usuarioIndividual != null) {
+                    System.out.println("Usuario individual SÍ existe: ID=" + usuarioIndividual.getIdUsuario() + 
+                        ", Estado=" + usuarioIndividual.getEstado());
+                } else {
+                    System.err.println("Usuario individual NO existe - posible problema en inserción");
+                }
+            } else {
+                System.out.println("Usuario encontrado exitosamente en la lista");
+            }
+        } else {
+            System.err.println("La lista está vacía o es null");
+        }
+        
+        assertTrue(lista.stream().anyMatch(r -> r.getIdUsuario().equals(userIdCreado)), 
+            "El usuario insertado debe estar presente en la lista");
     }
 
     @Test

@@ -20,9 +20,9 @@ public class CifradoTest {
      @Test
     public void testCifrarMD5() {
         System.out.println("cifrarMD5");
-        String texto = "bdfranky77";
+        String texto = "Chifa1212";
         String resultado = Cifrado.cifrarMD5(texto);
-        String resultado_esperado = "3J+Mv8WgCCNHU2xfbZGGog==";
+        String resultado_esperado = "IY+ZCZ81sdI5rjz/OrNSMg==";
         System.out.println(resultado);
         assertEquals(resultado, resultado_esperado);
     }
@@ -30,15 +30,15 @@ public class CifradoTest {
     @Test
     public void testDescifrarMD5() {
         System.out.println("descifrarMD5");
-        String texto = "V+bsfFzALCHIJz4nAw/+Ww==";
+        String texto = "IY+ZCZ81sdI5rjz/OrNSMg==";
         String resultado = Cifrado.descifrarMD5(texto);
-        String resultado_esperado = "bryan123";
+        String resultado_esperado = "Chifa1212";
         assertEquals(resultado, resultado_esperado);
     }
     @Test
     public void testDescifrar() {
         System.out.println("descifrarMD5");
-        String texto = "YGOE2OvoI245rjz/OrNSMg==";
+        String texto = "IY+ZCZ81sdI5rjz/OrNSMg==";
         String resultado = Cifrado.descifrarMD5(texto);
         System.out.println(resultado);
     }

@@ -1,11 +1,13 @@
 
 package pe.edu.pucp.softres.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
- *
+ * DTO para la tabla RES_RESERVAS
+ * Representa una reserva en el sistema
+ * 
  * @author frank
  */
 public class ReservaDTO {
@@ -15,8 +17,8 @@ public class ReservaDTO {
     private LocalDTO local;
     private FilaEsperaDTO filaEspera;
     private TipoReserva tipoReserva;
-    private Date fecha_Hora_Registro;
-    private Integer cantidad_personas;
+    private Date fechaHoraRegistro;
+    private Integer cantidadPersonas;
     private TipoMesaDTO tipoMesa;
     private Integer numeroMesas;
     private String observaciones;
@@ -28,63 +30,75 @@ public class ReservaDTO {
     private String usuarioCreacion;
     private Date fechaModificacion;
     private String usuarioModificacion;
+    
+    // Lista de mesas asignadas a la reserva (relación many-to-many)
+    private List<MesaDTO> mesasAsignadas;
 
-    // Constructores
+    // Constructor por defecto
     public ReservaDTO() {
         this.idReserva = null;
         this.usuario = null;
         this.local = null;
         this.filaEspera = null;
         this.tipoReserva = null;
-        this.fecha_Hora_Registro = null;
-        this.cantidad_personas = null;
+        this.fechaHoraRegistro = null;
+        this.cantidadPersonas = null;
         this.tipoMesa = null;
         this.numeroMesas = null;
         this.observaciones = null;
         this.motivoCancelacion = null;
         this.estado = null;
         this.nombreEvento = null;
+        this.descripcionEvento = null;
         this.fechaCreacion = null;
         this.usuarioCreacion = null;
-        this.descripcionEvento = null;
         this.fechaModificacion = null;
         this.usuarioModificacion = null;
+        this.mesasAsignadas = null;
     }
 
+    // Constructor completo
     public ReservaDTO(Integer idReserva, UsuariosDTO usuario, LocalDTO local, FilaEsperaDTO filaEspera,
-                  TipoReserva tipoReserva, Date fecha_Hora, Integer cantidad_personas, MotivosCancelacionDTO motivoCancelacion,
-                  int numeroMesas, String observaciones, EstadoReserva estado, String nombreEvento, String descripcionEvento) {
+                  TipoReserva tipoReserva, Date fechaHora, Integer cantidadPersonas, TipoMesaDTO tipoMesa,
+                  Integer numeroMesas, String observaciones, MotivosCancelacionDTO motivoCancelacion,
+                  EstadoReserva estado, String nombreEvento, String descripcionEvento) {
         this.idReserva = idReserva;
-        this.usuario = usuario;             // cambia idUsuario por objeto UsuariosDTO
-        this.local = local;                 // cambia idLocal por objeto LocalDTO
-        this.filaEspera = filaEspera;      // cambia idFilaEspera por objeto FilaEsperaDTO
+        this.usuario = usuario;
+        this.local = local;
+        this.filaEspera = filaEspera;
         this.tipoReserva = tipoReserva;
-        this.fecha_Hora_Registro = fecha_Hora;
-        this.cantidad_personas = cantidad_personas;
-        this.motivoCancelacion = motivoCancelacion; // si quieres que sea objeto cambia también
+        this.fechaHoraRegistro = fechaHora;
+        this.cantidadPersonas = cantidadPersonas;
+        this.tipoMesa = tipoMesa;
         this.numeroMesas = numeroMesas;
         this.observaciones = observaciones;
+        this.motivoCancelacion = motivoCancelacion;
         this.estado = estado;
         this.nombreEvento = nombreEvento;
         this.descripcionEvento = descripcionEvento;
     }
-    //constructor copia
 
+    // Constructor copia
     public ReservaDTO(ReservaDTO original) {
         this.idReserva = original.idReserva;
-        this.usuario = original.usuario;
-        this.local = original.local;
-        this.filaEspera = original.filaEspera;
+        this.usuario = original.usuario != null ? new UsuariosDTO(original.usuario) : null;
+        this.local = original.local != null ? new LocalDTO(original.local) : null;
+        this.filaEspera = original.filaEspera != null ? new FilaEsperaDTO(original.filaEspera) : null;
         this.tipoReserva = original.tipoReserva;
-        this.fecha_Hora_Registro = original.fecha_Hora_Registro;
-        this.cantidad_personas = original.cantidad_personas;
-        this.tipoMesa = original.tipoMesa;
+        this.fechaHoraRegistro = original.fechaHoraRegistro != null ? new Date(original.fechaHoraRegistro.getTime()) : null;
+        this.cantidadPersonas = original.cantidadPersonas;
+        this.tipoMesa = original.tipoMesa != null ? new TipoMesaDTO(original.tipoMesa) : null;
         this.numeroMesas = original.numeroMesas;
         this.observaciones = original.observaciones;
         this.motivoCancelacion = original.motivoCancelacion;
         this.estado = original.estado;
         this.nombreEvento = original.nombreEvento;
         this.descripcionEvento = original.descripcionEvento;
+        this.fechaCreacion = original.fechaCreacion != null ? new Date(original.fechaCreacion.getTime()) : null;
+        this.usuarioCreacion = original.usuarioCreacion;
+        this.fechaModificacion = original.fechaModificacion != null ? new Date(original.fechaModificacion.getTime()) : null;
+        this.usuarioModificacion = original.usuarioModificacion;
+        this.mesasAsignadas = original.mesasAsignadas;
     }
 
     // Getter & Setter
@@ -112,20 +126,20 @@ public class ReservaDTO {
         this.local = local;
     }
 
-    public Date getFecha_Hora() {
-        return fecha_Hora_Registro;
+    public Date getFechaHoraRegistro() {
+        return fechaHoraRegistro;
     }
 
-    public void setFecha_Hora(Date fecha_Hora) {
-        this.fecha_Hora_Registro = fecha_Hora;
+    public void setFechaHoraRegistro(Date fechaHoraRegistro) {
+        this.fechaHoraRegistro = fechaHoraRegistro;
     }
 
-    public Integer getCantidad_personas() {
-        return cantidad_personas;
+    public Integer getCantidadPersonas() {
+        return cantidadPersonas;
     }
 
-    public void setCantidad_personas(Integer cantidad_personas) {
-        this.cantidad_personas = cantidad_personas;
+    public void setCantidadPersonas(Integer cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
     }
 
     public TipoMesaDTO getTipoMesa() {
@@ -230,5 +244,84 @@ public class ReservaDTO {
 
     public void setUsuarioModificacion(String usuarioModificacion) {
         this.usuarioModificacion = usuarioModificacion;
+    }
+
+    public List<MesaDTO> getMesasAsignadas() {
+        return mesasAsignadas;
+    }
+
+    public void setMesasAsignadas(List<MesaDTO> mesasAsignadas) {
+        this.mesasAsignadas = mesasAsignadas;
+    }
+
+    /**
+     * Método de utilidad para verificar si la reserva está confirmada
+     * @return true si el estado es CONFIRMADA
+     */
+    public boolean estaConfirmada() {
+        return this.estado == EstadoReserva.CONFIRMADA;
+    }
+
+    /**
+     * Método de utilidad para verificar si la reserva está cancelada
+     * @return true si el estado es CANCELADA
+     */
+    public boolean estaCancelada() {
+        return this.estado == EstadoReserva.CANCELADA;
+    }
+
+    /**
+     * Método de utilidad para verificar si la reserva está pendiente
+     * @return true si el estado es PENDIENTE
+     */
+    public boolean estaPendiente() {
+        return this.estado == EstadoReserva.PENDIENTE;
+    }
+
+    /**
+     * Método de utilidad para verificar si es una reserva de evento
+     * @return true si el tipo de reserva es EVENTO
+     */
+    public boolean esReservaEvento() {
+        return this.tipoReserva == TipoReserva.EVENTO;
+    }
+
+    /**
+     * Método de utilidad para verificar si es una reserva común
+     * @return true si el tipo de reserva es COMUN
+     */
+    public boolean esReservaComun() {
+        return this.tipoReserva == TipoReserva.COMUN;
+    }
+
+    /**
+     * Método de utilidad para verificar si la reserva proviene de una fila de espera
+     * @return true si hay una fila de espera asociada
+     */
+    public boolean provieneDeFilaEspera() {
+        return this.filaEspera != null;
+    }
+
+    /**
+     * Método de utilidad para obtener el número total de mesas asignadas
+     * @return número de mesas asignadas o 0 si no hay ninguna
+     */
+    public int getCantidadMesasAsignadas() {
+        return this.mesasAsignadas != null ? this.mesasAsignadas.size() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "ReservaDTO{" +
+                "idReserva=" + idReserva +
+                ", usuario=" + (usuario != null ? usuario.getIdUsuario() : "null") +
+                ", local=" + (local != null ? local.getIdLocal() : "null") +
+                ", tipoReserva=" + tipoReserva +
+                ", fechaHoraRegistro=" + fechaHoraRegistro +
+                ", cantidadPersonas=" + cantidadPersonas +
+                ", numeroMesas=" + numeroMesas +
+                ", estado=" + estado +
+                ", nombreEvento='" + nombreEvento + '\'' +
+                '}';
     }
 }
