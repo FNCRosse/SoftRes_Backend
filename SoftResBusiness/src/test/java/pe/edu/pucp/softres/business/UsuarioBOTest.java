@@ -43,9 +43,9 @@ public class UsuarioBOTest {
         usuario.setRol(rol);
         usuario.setTipoDocumento(tipoDoc);
         usuario.setNombreComp("Usuario Test");
-        usuario.setNumeroDocumento("13395077");
+        usuario.setNumeroDocumento("53995077");
         usuario.setContrasenha("password123");
-        usuario.setEmail("test6@example.com");
+        usuario.setEmail("test9@example.com");
         usuario.setTelefono("999999999");
         usuario.setSueldo(130.00);
         usuario.setFechaContratacion(new Date());

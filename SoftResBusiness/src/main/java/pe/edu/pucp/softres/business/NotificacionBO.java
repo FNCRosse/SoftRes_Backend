@@ -4,7 +4,7 @@ import pe.edu.pucp.softres.dao.NotificacionDAO;
 import pe.edu.pucp.softres.daoImp.NotificacionDAOImpl;
 import pe.edu.pucp.softres.model.NotificacionDTO;
 
-import java.util.List;
+import java.util.ArrayList;
 import pe.edu.pucp.softres.model.EstadoNotificacion;
 import pe.edu.pucp.softres.parametros.NotificacionParametros;
 
@@ -26,7 +26,7 @@ public class NotificacionBO {
         return this.notificacionDAO.obtenerPorId(notificacionId,idUsuario);
     }
 
-    public List<NotificacionDTO> listar(NotificacionParametros parametros) {
+    public ArrayList<NotificacionDTO> listar(NotificacionParametros parametros) {
         return this.notificacionDAO.listar(parametros);
     }
 

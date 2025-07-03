@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pe.edu.pucp.softres.parametros;
-import pe.edu.pucp.softres.model.EstadoReservaState;
-import java.time.LocalDateTime;
 import java.util.Date;
+
 import pe.edu.pucp.softres.model.EstadoReserva;
 import pe.edu.pucp.softres.model.TipoReserva;
 /**
@@ -18,6 +17,7 @@ public class ReservaParametros {
     private Date fechaFin;
     private Integer idLocal;
     private String dniCliente;
+    private Integer usuarioId;
     private EstadoReserva estado;
     
     public ReservaParametros(){
@@ -26,6 +26,7 @@ public class ReservaParametros {
         this.fechaFin = null;
         this.idLocal = null;
         this.dniCliente = null;
+        this.usuarioId = null;
         this.estado = null;
     }
 
@@ -61,12 +62,25 @@ public class ReservaParametros {
         this.idLocal = idLocal;
     }
 
-    public String getdniCliente() {
+    // Método alias para compatibilidad con el código existente
+    public void setLocalId(Integer localId) {
+        this.idLocal = localId;
+    }
+
+    public String getDniCliente() {
         return dniCliente;
     }
 
-    public void setdniCliente(String dniCliente) {
+    public void setDniCliente(String dniCliente) {
         this.dniCliente = dniCliente;
+    }
+
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public EstadoReserva getEstado() {
