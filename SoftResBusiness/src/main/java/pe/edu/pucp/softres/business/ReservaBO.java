@@ -17,6 +17,7 @@ import pe.edu.pucp.softres.daoImp.UsuarioDAOImpl;
 import pe.edu.pucp.softres.daoImp.MesaDAOImpl;
 import pe.edu.pucp.softres.daoImp.NotificacionDAOImpl;
 import pe.edu.pucp.softres.daoImp.FilaEsperaDAOImpl;
+import pe.edu.pucp.softres.daoImp.ReservaxMesaDAOImpl;
 import pe.edu.pucp.softres.model.ReservaDTO;
 import pe.edu.pucp.softres.model.UsuariosDTO;
 import pe.edu.pucp.softres.model.MesaDTO;
@@ -56,79 +57,35 @@ public class ReservaBO {
      */
     public Integer insertar(ReservaDTO reserva) {
         try {
-            // Validaciones básicas de entrada
             if (reserva == null) {
                 throw new IllegalArgumentException("La reserva no puede ser null");
             }
-
-            // Validaciones de negocio
             validarReservaNueva(reserva);
-
-            // Obtener usuario para validar permisos
             UsuariosDTO usuario = usuarioDAO.obtenerPorId(reserva.getUsuario().getIdUsuario());
-            if (usuario == null) {
-                throw new RuntimeException("Usuario no encontrado");
-            }
-
-            // Validar permisos según rol
             validarPermisosCreacion(usuario);
 
-            // Establecer estado inicial
             reserva.setEstado(EstadoReserva.PENDIENTE);
-            if (reserva.getFechaCreacion() == null) {
-                reserva.setFechaCreacion(new Date());
+            reserva.setFechaCreacion(new Date());
+
+            // Insertamos primero la reserva para obtener un ID
+            Integer idReserva = this.reservaDAO.insertar(reserva);
+            if (idReserva == null || idReserva <= 0) {
+                throw new RuntimeException("No se pudo crear el registro de la reserva.");
             }
+            reserva.setIdReserva(idReserva);
 
-            // Para desarrollo y tests, simplificar la lógica de disponibilidad
-            boolean hayDisponibilidad = true;
-            try {
-                hayDisponibilidad = verificarDisponibilidadMesas(reserva);
-            } catch (Exception e) {
-                System.err.println("Error verificando disponibilidad, asumiendo disponibilidad: " + e.getMessage());
-                hayDisponibilidad = true; // En caso de error, asumir disponibilidad para tests
-            }
+            // Ahora, intentamos asignar las mesas
+            boolean mesasAsignadas = reservaDAO.intentarAsignarMesas(reserva);
 
-            if (hayDisponibilidad) {
-                // Hay disponibilidad - insertar reserva normalmente
-                Integer id = this.reservaDAO.insertar(reserva);
-
-                if (id != null && id > 0) {
-                    // Establecer el ID en el objeto para uso posterior
-                    reserva.setIdReserva(id);
-
-                    // Intentar reservar las mesas específicas (no crítico para el éxito)
-                    try {
-                        reservarMesasEspecificas(id, reserva);
-                    } catch (Exception e) {
-                        System.err.println("Error reservando mesas (no crítico): " + e.getMessage());
-                        // No fallar la inserción por problemas con mesas
-                    }
-
-                    // Enviar notificación de confirmación (solo para clientes)
-                    try {
-                        if (esCliente(usuario)) {
-                            enviarNotificacion(usuario, TipoNotificacion.CONFIRMACION,
-                                    "Su reserva ha sido registrada exitosamente para el "
-                                    + formatearFecha(reserva.getFechaHoraRegistro()));
-                        }
-                    } catch (Exception e) {
-                        System.err.println("Error enviando notificación (no crítico): " + e.getMessage());
-                        // No fallar la inserción por problemas con notificaciones
-                    }
-
-                    System.out.println("Reserva insertada exitosamente con ID: " + id);
-                    return id;
-                } else {
-                    throw new RuntimeException("El DAO no pudo insertar la reserva. ID retornado: " + id);
-                }
+            if (mesasAsignadas) {
+                enviarNotificacion(usuario, TipoNotificacion.CONFIRMACION, "Tu reserva ha sido registrada.");
+                return idReserva;
             } else {
-                // No hay disponibilidad - agregar a fila de espera
-                System.out.println("No hay disponibilidad, agregando a fila de espera");
-                return agregarAFilaEspera(reserva, usuario);
+                // Si no hay mesas, se ofrece la fila de espera
+                return agregarAFilaEspera(reserva, usuario); // Retorna -1 si se añade a la fila
             }
-
         } catch (IllegalArgumentException e) {
-            throw e;
+            throw e; // Relanzar para que el test la vea
         } catch (Exception e) {
             throw new RuntimeException("Error al insertar reserva: " + e.getMessage(), e);
         }
@@ -256,36 +213,6 @@ public class ReservaBO {
         long dosHorasEnMilisegundos = 2 * 60 * 60 * 1000; // 2 horas
 
         return diferenciaMilisegundos < dosHorasEnMilisegundos;
-    }
-
-    /**
-     * Reserva mesas específicas para una reserva
-     */
-    private void reservarMesasEspecificas(Integer reservaId, ReservaDTO reserva) {
-        try {
-            // Usar ReservaxMesaBO para asignar mesas de manera más robusta
-            ReservaxMesaBO reservaxMesaBO = new ReservaxMesaBO();
-            boolean mesasAsignadas = reservaxMesaBO.asignarMesasAReserva(reservaId, reserva);
-
-            if (mesasAsignadas) {
-                System.out.println("Mesas asignadas exitosamente para la reserva " + reservaId);
-            } else {
-                System.err.println("No se pudieron asignar mesas para la reserva " + reservaId);
-                // Fallback: intentar con el método del DAO
-                try {
-                    Integer mesasAsignadasDAO = reservaDAO.asignarMesas(reserva);
-                    if (mesasAsignadasDAO != null && mesasAsignadasDAO > 0) {
-                        System.out.println("Mesas asignadas via DAO para la reserva " + reservaId);
-                    }
-                } catch (Exception e2) {
-                    System.err.println("Error en fallback de asignación de mesas: " + e2.getMessage());
-                }
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error reservando mesas: " + e.getMessage());
-            // No relanzar la excepción para no fallar la inserción de la reserva
-        }
     }
 
     /**
@@ -446,12 +373,11 @@ public class ReservaBO {
 
             // Validaciones de modificación
             //validarModificacion(reserva, reservaOriginal, usuario);
-
             // Si hay cambio de fecha/hora, validar disponibilidad
 //            if (!sonFechasIguales(reservaOriginal.getFechaHoraRegistro(), reserva.getFechaHoraRegistro())) {
-//                if (!verificarDisponibilidadMesas(reserva)) {
+            ////                if (!verificarDisponibilidadMesas(reserva)) {
 //                    throw new RuntimeException("No hay disponibilidad para la nueva fecha/hora solicitada");
-//                }
+////                }
 //            }
 
             // Actualizar campos de auditoría
@@ -476,82 +402,108 @@ public class ReservaBO {
         }
     }
 
+    // En tu archivo pe.edu.pucp.softres.business.ReservaBO.java
+    /**
+     * Método principal que contiene TODA la lógica de negocio para una
+     * cancelación. Este método se encarga de validar, actualizar el estado,
+     * liberar recursos y notificar.
+     *
+     * @param reserva DTO que debe contener al menos el idReserva, el usuario
+     * que cancela y el motivo.
+     * @return El número de filas afectadas (generalmente 1 si tuvo éxito, 0 si
+     * no).
+     */
     public Integer cancelar(ReservaDTO reserva) {
         try {
-            if (reserva == null) {
-                throw new IllegalArgumentException("La reserva no puede ser null");
+            // -----------------------------------------------------------------
+            // 1. VALIDACIONES DE ENTRADA BÁSICAS
+            // -----------------------------------------------------------------
+            if (reserva == null || reserva.getIdReserva() == null || reserva.getIdReserva() <= 0) {
+                throw new IllegalArgumentException("El ID de la reserva es inválido o no fue proporcionado.");
+            }
+            if (reserva.getUsuario() == null || reserva.getUsuario().getIdUsuario() == null) {
+                throw new IllegalArgumentException("El usuario que realiza la cancelación es requerido.");
+            }
+            if (reserva.getMotivoCancelacion() == null || reserva.getMotivoCancelacion().getIdMotivo() == null) {
+                throw new IllegalArgumentException("El motivo de la cancelación es obligatorio.");
             }
 
-            // Si no tiene ID, intentar obtenerlo
-            Integer reservaId = reserva.getIdReserva();
-            if (reservaId == null) {
-                throw new IllegalArgumentException("El ID de la reserva no puede ser null");
-            }
-            if (reservaId <= 0) {
-                throw new IllegalArgumentException("El ID de la reserva debe ser un número positivo");
-            }
-
-            // Obtener reserva original completa
-            ReservaDTO reservaOriginal = reservaDAO.obtenerPorId(reservaId);
+            // -----------------------------------------------------------------
+            // 2. OBTENER DATOS FRESCOS DE LA BASE DE DATOS
+            // -----------------------------------------------------------------
+            // Obtenemos la reserva completa desde la BD para trabajar con datos seguros y actualizados.
+            ReservaDTO reservaOriginal = reservaDAO.obtenerPorId(reserva.getIdReserva());
             if (reservaOriginal == null) {
-                throw new RuntimeException("Reserva con ID " + reservaId + " no encontrada");
+                throw new RuntimeException("La reserva con ID " + reserva.getIdReserva() + " no fue encontrada.");
             }
 
-            // Asegurar que la reserva tenga el ID correcto
-            reserva.setIdReserva(reservaId);
-
-            // Obtener usuario para validar permisos
-            Integer usuarioId = null;
-            if (reserva.getUsuario() != null && reserva.getUsuario().getIdUsuario() != null) {
-                usuarioId = reserva.getUsuario().getIdUsuario();
-            } else if (reservaOriginal.getUsuario() != null && reservaOriginal.getUsuario().getIdUsuario() != null) {
-                usuarioId = reservaOriginal.getUsuario().getIdUsuario();
-                // Asegurar que la reserva tenga el usuario
-                reserva.setUsuario(reservaOriginal.getUsuario());
+            // Obtenemos el usuario que realiza la acción para verificar sus permisos.
+            UsuariosDTO usuarioQueCancela = usuarioDAO.obtenerPorId(reserva.getUsuario().getIdUsuario());
+            if (usuarioQueCancela == null) {
+                throw new RuntimeException("El usuario con ID " + reserva.getUsuario().getIdUsuario() + " no existe.");
             }
 
-            if (usuarioId == null) {
-                throw new IllegalArgumentException("No se puede determinar el usuario de la reserva");
+            // -----------------------------------------------------------------
+            // 3. VALIDACIONES DE REGLAS DE NEGOCIO
+            // -----------------------------------------------------------------
+            // Llama a tu método de validación centralizado.
+            validarCancelacion(reservaOriginal, usuarioQueCancela);
+
+            // -----------------------------------------------------------------
+            // 4. LIBERAR MESAS ASOCIADAS (ACCIÓN CRÍTICA)
+            // -----------------------------------------------------------------
+            // Instanciamos el DAO de la tabla intermedia para liberar las mesas.
+            ReservaxMesaDAOImpl rxmDAO = new ReservaxMesaDAOImpl();
+            boolean mesasLiberadas = rxmDAO.liberarMesasDeReserva(reserva.getIdReserva());
+
+            if (!mesasLiberadas) {
+                // Logueamos una advertencia. Dependiendo de la regla de negocio,
+                // podrías decidir detener la cancelación aquí si liberar mesas es obligatorio.
+                // Por ahora, solo lo advertimos y continuamos.
+                System.err.println("Advertencia: No se pudieron liberar las mesas para la reserva " + reserva.getIdReserva() + ". La reserva será cancelada de todas formas.");
             }
 
-            UsuariosDTO usuario = usuarioDAO.obtenerPorId(usuarioId);
-            if (usuario == null) {
-                throw new RuntimeException("Usuario con ID " + usuarioId + " no encontrado");
-            }
+            // -----------------------------------------------------------------
+            // 5. PREPARAR Y EJECUTAR LA ACTUALIZACIÓN DE LA RESERVA
+            // -----------------------------------------------------------------
+            // Modificamos el objeto que obtuvimos de la BD, no el que vino del cliente.
+            reservaOriginal.setEstado(EstadoReserva.CANCELADA);
+            reservaOriginal.setMotivoCancelacion(reserva.getMotivoCancelacion()); // Usamos el motivo que envió el cliente.
+            reservaOriginal.setFechaModificacion(new Date());
+            reservaOriginal.setUsuarioModificacion(usuarioQueCancela.getEmail()); // Guardar email es más único.
 
-            // Validar cancelación usando la reserva original para los datos completos
-            validarCancelacion(reservaOriginal, usuario);
+            // Llamamos al método del DAO que ejecuta el UPDATE para cancelar.
+            // Tu método 'eliminar' del DAO es el que tiene el SQL correcto para esto.
+            Integer resultado = this.reservaDAO.eliminar(reservaOriginal);
 
-            // Cambiar estado a cancelada y actualizar campos de auditoría
-            reserva.setEstado(EstadoReserva.CANCELADA);
-            reserva.setFechaModificacion(new Date());
-
-            // Actualizar reserva (eliminación lógica)
-            Integer resultado = this.reservaDAO.modificar(reserva);
-
+            // -----------------------------------------------------------------
+            // 6. ACCIONES POST-CANCELACIÓN (SI FUE EXITOSA)
+            // -----------------------------------------------------------------
             if (resultado > 0) {
-                // Liberar mesas asociadas
-                liberarMesasReserva(reserva.getIdReserva());
+                // Notificar al siguiente en la fila de espera, si aplica.
+                notificarSiguienteEnFilaEspera(reservaOriginal.getLocal().getIdLocal(), reservaOriginal.getFechaHoraRegistro());
 
-                // Notificar al siguiente en la fila de espera si existe
-                notificarSiguienteEnFilaEspera(reservaOriginal.getLocal().getIdLocal(),
-                        reservaOriginal.getFechaHoraRegistro());
-
-                // Enviar notificación de cancelación (solo para clientes)
-                if (esCliente(usuario)) {
-                    String motivo = reserva.getMotivoCancelacion() != null
-                            ? reserva.getMotivoCancelacion().getDescripcion() : "Sin motivo especificado";
-                    enviarNotificacion(usuario, TipoNotificacion.CANCELACION,
-                            "Su reserva ha sido cancelada. Motivo: " + motivo);
+                // Enviar una notificación por correo al cliente dueño de la reserva.
+                if (esCliente(reservaOriginal.getUsuario())) {
+                    enviarNotificacion(reservaOriginal.getUsuario(), TipoNotificacion.CANCELACION, "Lamentamos informarte que tu reserva en " + reservaOriginal.getLocal().getNombre() + " ha sido cancelada.");
                 }
             }
 
             return resultado;
 
         } catch (IllegalArgumentException e) {
+            // Excepción de validación (ej. ID nulo, fecha incorrecta). La relanzamos.
+            // El test unitario la atrapará y pasará.
+            throw e;
+        } catch (RuntimeException e) {
+            // Excepción de negocio (ej. "No tiene permisos"). La relanzamos.
+            // Un test específico para esta regla de negocio la atrapará.
             throw e;
         } catch (Exception e) {
-            throw new RuntimeException("Error al cancelar reserva: " + e.getMessage(), e);
+            // Cualquier otra excepción inesperada (error de base de datos, etc.).
+            // La envolvemos en una RuntimeException para no romper la firma del método.
+            e.printStackTrace(); // Muy importante para ver el error real en la consola de Glassfish
+            throw new RuntimeException("Ocurrió un error inesperado al procesar la cancelación de la reserva.", e);
         }
     }
 

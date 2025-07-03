@@ -15,5 +15,5 @@ public interface ReservaDAO {
     List<ReservaDTO> listar(ReservaParametros parametros);
     Integer modificar(ReservaDTO reserva);
     Integer eliminar(ReservaDTO reserva);
-    Integer asignarMesas(ReservaDTO reserva);
+    boolean intentarAsignarMesas(ReservaDTO reserva);
 }
