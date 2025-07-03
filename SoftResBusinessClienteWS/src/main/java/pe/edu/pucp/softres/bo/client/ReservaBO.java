@@ -17,9 +17,9 @@ import pe.edu.pucp.softres.model.ReservaDTO;
 import pe.edu.pucp.softres.parametros.ReservaParametros;
 
 /**
- * Business Object para operaciones de Reserva en el cliente
- * Conecta con el servicio REST del servidor para realizar operaciones CRUD
- * 
+ * Business Object para operaciones de Reserva en el cliente Conecta con el
+ * servicio REST del servidor para realizar operaciones CRUD
+ *
  * @author frank
  */
 public class ReservaBO {
@@ -43,14 +43,16 @@ public class ReservaBO {
     }
 
     /**
-     * Clase DTO para confirmación de reservas
-     * Coincide con la implementación del servidor
+     * Clase DTO para confirmación de reservas Coincide con la implementación
+     * del servidor
      */
     public static class ReservaConfirmacionDTO {
+
         private Integer reservaId;
         private Integer usuarioConfirmadorId;
 
-        public ReservaConfirmacionDTO() {}
+        public ReservaConfirmacionDTO() {
+        }
 
         public ReservaConfirmacionDTO(Integer reservaId, Integer usuarioConfirmadorId) {
             this.reservaId = reservaId;
@@ -84,7 +86,9 @@ public class ReservaBO {
 
     private void crearHttpRequestPOST(String jsonRequest, String urlExtra) {
         String fullUrl = this.url;
-        if (urlExtra != null) fullUrl += "/" + urlExtra;
+        if (urlExtra != null) {
+            fullUrl += "/" + urlExtra;
+        }
 
         this.request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
@@ -95,7 +99,9 @@ public class ReservaBO {
 
     private void crearHttpRequestGET(Integer id) {
         String fullUrl = this.url;
-        if (id != null) fullUrl += "/" + id;
+        if (id != null) {
+            fullUrl += "/" + id;
+        }
 
         this.request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
@@ -105,7 +111,9 @@ public class ReservaBO {
 
     private void crearHttpRequestPUT(String jsonRequest, String urlExtra) {
         String fullUrl = this.url;
-        if (urlExtra != null) fullUrl += "/" + urlExtra;
+        if (urlExtra != null) {
+            fullUrl += "/" + urlExtra;
+        }
 
         this.request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
@@ -116,7 +124,9 @@ public class ReservaBO {
 
     private void crearHttpRequestPUTSinBody(String urlExtra) {
         String fullUrl = this.url;
-        if (urlExtra != null) fullUrl += "/" + urlExtra;
+        if (urlExtra != null) {
+            fullUrl += "/" + urlExtra;
+        }
 
         this.request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
@@ -138,7 +148,8 @@ public class ReservaBO {
     }
 
     private List<ReservaDTO> deserializarLista() throws JsonProcessingException {
-        return this.mapper.readValue(this.response.body(), new TypeReference<>() {});
+        return this.mapper.readValue(this.response.body(), new TypeReference<>() {
+        });
     }
 
     /**
@@ -181,7 +192,7 @@ public class ReservaBO {
             if (responseBody != null && !responseBody.trim().isEmpty()) {
                 mensaje += ": " + responseBody;
             }
-            
+
             switch (statusCode) {
                 case 400:
                     throw new IllegalArgumentException("Solicitud inválida - " + responseBody);
@@ -198,7 +209,7 @@ public class ReservaBO {
     public Integer insertar(ReservaDTO reserva) throws IOException, InterruptedException {
         try {
             validarReserva(reserva);
-            
+
             String jsonRequest = serializar(reserva);
             this.crearHttpClient();
             this.crearHttpRequestPOST(jsonRequest, null);
@@ -224,12 +235,12 @@ public class ReservaBO {
     public ReservaDTO obtenerPorId(Integer reservaId) throws IOException, InterruptedException {
         try {
             validarId(reservaId, "ID de reserva");
-            
+
             this.crearHttpClient();
             this.crearHttpRequestGET(reservaId);
             this.enviarRequest();
             this.cerrarHttpClient();
-            
+
             validarRespuestaHTTP();
             return deserializarReserva();
         } catch (IllegalArgumentException e) {
@@ -244,13 +255,13 @@ public class ReservaBO {
     public List<ReservaDTO> listar(ReservaParametros parametros) throws IOException, InterruptedException {
         try {
             validarParametros(parametros);
-            
+
             String jsonRequest = serializar(parametros);
             this.crearHttpClient();
             this.crearHttpRequestPOST(jsonRequest, "listar");
             this.enviarRequest();
             this.cerrarHttpClient();
-            
+
             validarRespuestaHTTP();
             return deserializarLista();
         } catch (IllegalArgumentException e) {
@@ -266,15 +277,18 @@ public class ReservaBO {
         try {
             validarReserva(reserva);
             validarId(reserva.getIdReserva(), "ID de reserva");
-            
+
             String jsonRequest = serializar(reserva);
+            System.out.println("➡ JSON enviado al backend:");
+            System.out.println(jsonRequest);
             this.crearHttpClient();
             this.crearHttpRequestPUT(jsonRequest, null);
             this.enviarRequest();
             this.cerrarHttpClient();
 
             validarRespuestaHTTP();
-
+            System.out.println("⬅ Respuesta recibida del backend:");
+            System.out.println(this.response.body());
             if (response.statusCode() == Response.Status.OK.getStatusCode()) {
                 return reserva.getIdReserva();
             }
@@ -292,7 +306,7 @@ public class ReservaBO {
         try {
             validarReserva(reserva);
             validarId(reserva.getIdReserva(), "ID de reserva");
-            
+
             String jsonRequest = serializar(reserva);
             this.crearHttpClient();
             this.crearHttpRequestPUT(jsonRequest, "eliminar");
@@ -316,6 +330,7 @@ public class ReservaBO {
 
     /**
      * Confirma una reserva usando PUT con parámetros en la URL
+     *
      * @param reservaId ID de la reserva a confirmar
      * @param usuarioConfirmadorId ID del usuario que confirma
      * @return ID de la reserva si fue exitoso, 0 en caso contrario
@@ -324,7 +339,7 @@ public class ReservaBO {
         try {
             validarId(reservaId, "ID de reserva");
             validarId(usuarioConfirmadorId, "ID de usuario confirmador");
-            
+
             this.crearHttpClient();
             this.crearHttpRequestPUTSinBody("confirmar/" + reservaId + "/" + usuarioConfirmadorId);
             this.enviarRequest();
@@ -345,6 +360,7 @@ public class ReservaBO {
 
     /**
      * Confirma una reserva usando POST con DTO (método alternativo)
+     *
      * @param confirmacion DTO con los datos de confirmación
      * @return ID de la reserva si fue exitoso, 0 en caso contrario
      */
@@ -355,7 +371,7 @@ public class ReservaBO {
             }
             validarId(confirmacion.getReservaId(), "ID de reserva en confirmación");
             validarId(confirmacion.getUsuarioConfirmadorId(), "ID de usuario confirmador en confirmación");
-            
+
             String jsonRequest = serializar(confirmacion);
             this.crearHttpClient();
             this.crearHttpRequestPOST(jsonRequest, "confirmar");
@@ -379,6 +395,7 @@ public class ReservaBO {
 
     /**
      * Método de conveniencia para confirmar reserva usando POST
+     *
      * @param reservaId ID de la reserva a confirmar
      * @param usuarioConfirmadorId ID del usuario que confirma
      * @return ID de la reserva si fue exitoso, 0 en caso contrario
@@ -392,13 +409,16 @@ public class ReservaBO {
         try {
             validarReserva(reserva);
             validarId(reserva.getIdReserva(), "ID de reserva");
-            
+
             String jsonRequest = serializar(reserva);
+            System.out.println("➡ JSON enviado al backend:");
+            System.out.println(jsonRequest);
             this.crearHttpClient();
-            this.crearHttpRequestPUT(jsonRequest, "cancelar");
+            this.crearHttpRequestPOST(jsonRequest, "cancelar");
             this.enviarRequest();
             this.cerrarHttpClient();
-
+            System.out.println("⬅ Respuesta recibida del backend:");
+            System.out.println(this.response.body());
             validarRespuestaHTTP();
 
             if (response.statusCode() == Response.Status.OK.getStatusCode()) {

@@ -2,6 +2,7 @@
 
 package pe.edu.pucp.softres.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 
@@ -246,11 +247,11 @@ public class ReservaDTO {
     public void setUsuarioModificacion(String usuarioModificacion) {
         this.usuarioModificacion = usuarioModificacion;
     }
-
+    @JsonIgnore
     public List<MesaDTO> getMesasAsignadas() {
         return mesasAsignadas;
     }
-
+    @JsonIgnore
     public void setMesasAsignadas(List<MesaDTO> mesasAsignadas) {
         this.mesasAsignadas = mesasAsignadas;
     }
@@ -259,6 +260,7 @@ public class ReservaDTO {
      * Método de utilidad para verificar si la reserva está confirmada
      * @return true si el estado es CONFIRMADA
      */
+    @JsonIgnore
     public boolean estaConfirmada() {
         return this.estado == EstadoReserva.CONFIRMADA;
     }
@@ -267,6 +269,7 @@ public class ReservaDTO {
      * Método de utilidad para verificar si la reserva está cancelada
      * @return true si el estado es CANCELADA
      */
+    @JsonIgnore
     public boolean estaCancelada() {
         return this.estado == EstadoReserva.CANCELADA;
     }
@@ -283,6 +286,7 @@ public class ReservaDTO {
      * Método de utilidad para verificar si es una reserva de evento
      * @return true si el tipo de reserva es EVENTO
      */
+    @JsonIgnore
     public boolean esReservaEvento() {
         return this.tipoReserva == TipoReserva.EVENTO;
     }
@@ -291,6 +295,7 @@ public class ReservaDTO {
      * Método de utilidad para verificar si es una reserva común
      * @return true si el tipo de reserva es COMUN
      */
+    @JsonIgnore
     public boolean esReservaComun() {
         return this.tipoReserva == TipoReserva.COMUN;
     }
@@ -299,6 +304,7 @@ public class ReservaDTO {
      * Método de utilidad para verificar si la reserva proviene de una fila de espera
      * @return true si hay una fila de espera asociada
      */
+    @JsonIgnore
     public boolean provieneDeFilaEspera() {
         return this.filaEspera != null;
     }
@@ -307,10 +313,11 @@ public class ReservaDTO {
      * Método de utilidad para obtener el número total de mesas asignadas
      * @return número de mesas asignadas o 0 si no hay ninguna
      */
+    @JsonIgnore
     public int getCantidadMesasAsignadas() {
         return this.mesasAsignadas != null ? this.mesasAsignadas.size() : 0;
     }
-
+    @JsonIgnore
     @Override
     public String toString() {
         return "ReservaDTO{" +
