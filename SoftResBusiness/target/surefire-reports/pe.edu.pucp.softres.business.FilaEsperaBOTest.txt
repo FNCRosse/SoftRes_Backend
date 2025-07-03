@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pe.edu.pucp.softres.business.FilaEsperaBOTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.266 s -- in pe.edu.pucp.softres.business.FilaEsperaBOTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.372 s -- in pe.edu.pucp.softres.business.FilaEsperaBOTest

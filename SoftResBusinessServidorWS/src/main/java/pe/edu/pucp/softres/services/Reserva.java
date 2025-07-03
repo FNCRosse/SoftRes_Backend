@@ -152,7 +152,7 @@ public class Reserva {
         }
     }
 
-    @PUT
+    @POST
     @Path("/cancelar")
     public Response cancelar(ReservaDTO reserva) {
         try {
