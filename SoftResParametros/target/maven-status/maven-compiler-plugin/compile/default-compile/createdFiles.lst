@@ -16,7 +16,6 @@ pe\edu\pucp\softres\parametros\LocalParametros.class
 pe\edu\pucp\softres\parametros\NotificacionParametros.class
 pe\edu\pucp\softres\parametros\ReporteReservasParametros.class
 pe\edu\pucp\softres\parametros\UsuariosParametrosBuilder.class
-pe\edu\pucp\softres\parametros\ReservaParametrosBuilder.class
 pe\edu\pucp\softres\parametros\ReporteClientesParametros.class
 pe\edu\pucp\softres\parametros\ReporteClientesParametrosBuilder.class
 pe\edu\pucp\softres\parametros\SedeParametrosBuilder.class

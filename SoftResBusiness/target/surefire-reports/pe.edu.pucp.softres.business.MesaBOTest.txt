@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pe.edu.pucp.softres.business.MesaBOTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.185 s -- in pe.edu.pucp.softres.business.MesaBOTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.55 s -- in pe.edu.pucp.softres.business.MesaBOTest

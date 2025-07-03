@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.ComentarioBOTest" time="9.413" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.ComentarioBOTest" time="11.646" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056\surefirebooter-20250702065933576_11.jar C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056 2025-07-02T06-59-26_780-jvmRun1 surefire-20250702065933576_9tmp surefire_1-20250702065933576_10tmp"/>
+    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573 2025-07-02T18-32-54_894-jvmRun1 surefire-20250702183259287_9tmp surefire_1-20250702183259287_10tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\test-classes;A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\classes;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\wilso\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\3.0.1\jakarta.xml.bind-api-3.0.1.jar;C:\Users\wilso\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResModel\target\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResParametros\target\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResDBManager\target\SoftResDBManager-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\wilso\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\wilso\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\wilso\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\wilso\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;A:\tarea_academica\SoftRes_Backend\SoftResPersistence\target\SoftResPersistence-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056\surefirebooter-20250702065933576_11.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.5+9-LTS-239"/>
@@ -59,33 +59,33 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="1.898">
+  <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="1.529">
     <system-out><![CDATA[Insertar comentarios
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:59:36 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_COMENTARIOS(USUARIO_ID, RESERVA_ID, MENSAJE, PUNTUACION, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (5, 3, 'Elegante servicio', 5, 1, '2025-07-02 06:59:35.074', 'test_insertar', NULL, NULL)
+    <system-err><![CDATA[jul. 02, 2025 6:33:01 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_COMENTARIOS(USUARIO_ID, RESERVA_ID, MENSAJE, PUNTUACION, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (5, 3, 'Elegante servicio', 5, 1, '2025-07-02 18:33:00.254', 'test_insertar', NULL, NULL)
 ]]></system-err>
   </testcase>
-  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="0.856">
+  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="0.881">
     <system-out><![CDATA[Obtener comentario por ID
 ]]></system-out>
   </testcase>
-  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="2.886">
+  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="2.862">
     <system-out><![CDATA[Modificar comentario
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:59:39 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_COMENTARIOS SET USUARIO_ID=5, RESERVA_ID=3, MENSAJE='Modificado', PUNTUACION=4, ESTADO=1, FECHA_CREACION='2025-07-02 06:59:35', USUARIO_CREACION='test_insertar', FECHA_MODIFICACION='2025-07-02 06:59:38.682', USUARIO_MODIFICACION='mod_test' WHERE COMENTARIO_ID=31
+    <system-err><![CDATA[jul. 02, 2025 6:33:04 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_COMENTARIOS SET USUARIO_ID=5, RESERVA_ID=3, MENSAJE='Modificado', PUNTUACION=4, ESTADO=1, FECHA_CREACION='2025-07-02 18:33:00', USUARIO_CREACION='test_insertar', FECHA_MODIFICACION='2025-07-02 18:33:03.508', USUARIO_MODIFICACION='mod_test' WHERE COMENTARIO_ID=34
 ]]></system-err>
   </testcase>
-  <testcase name="testListar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="0.859">
+  <testcase name="testListar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="0.868">
     <system-out><![CDATA[Listar comentarios
 ]]></system-out>
   </testcase>
-  <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="2.885">
+  <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.ComentarioBOTest" time="5.488">
     <system-out><![CDATA[Eliminar comentario
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:59:43 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_COMENTARIOS SET ESTADO =0,   FECHA_MODIFICACION ='2025-07-02 06:59:42.412',  USUARIO_MODIFICACION = 'test_eliminar' WHERE COMENTARIO_ID=31
+    <system-err><![CDATA[jul. 02, 2025 6:33:10 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_COMENTARIOS SET ESTADO =0,   FECHA_MODIFICACION ='2025-07-02 18:33:07.59',  USUARIO_MODIFICACION = 'test_eliminar' WHERE COMENTARIO_ID=34
 ]]></system-err>
   </testcase>
 </testsuite>

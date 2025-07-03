@@ -70,7 +70,7 @@ public class ReservaParametrosBuilder {
         parametros.setFechaInicio(this.fechaInicio);
         parametros.setFechaFin(this.fechaFin);
         parametros.setIdLocal(this.idLocal);
-        parametros.setdniCliente(dniCliente);
+        parametros.setDniCliente(dniCliente);
         parametros.setUsuarioId(this.usuarioId);
         parametros.setEstado(this.estado);
         return parametros;

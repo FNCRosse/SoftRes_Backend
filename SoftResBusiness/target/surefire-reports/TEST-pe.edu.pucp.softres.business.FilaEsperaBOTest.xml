@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="245.251" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="332.232" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056\surefirebooter-20250702065933576_11.jar C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056 2025-07-02T06-59-26_780-jvmRun1 surefire-20250702065933576_9tmp surefire_1-20250702065933576_10tmp"/>
+    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573 2025-07-02T18-32-54_894-jvmRun1 surefire-20250702183259287_9tmp surefire_1-20250702183259287_10tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\test-classes;A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\classes;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\wilso\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\3.0.1\jakarta.xml.bind-api-3.0.1.jar;C:\Users\wilso\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResModel\target\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResParametros\target\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResDBManager\target\SoftResDBManager-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\wilso\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\wilso\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\wilso\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\wilso\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;A:\tarea_academica\SoftRes_Backend\SoftResPersistence\target\SoftResPersistence-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire15664834401588355056\surefirebooter-20250702065933576_11.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.5+9-LTS-239"/>
@@ -59,32 +59,32 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testInsertarFilaEspera_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.497">
+  <testcase name="testInsertarFilaEspera_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.489">
     <system-out><![CDATA[=== Test: Insertar Fila de Espera ===
-Fila de espera creada con ID: 40
+Fila de espera creada con ID: 50
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:59:45 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_FILASESPERA(USUARIO_ID, LOCAL_ID, TIPO_RESERVA, CANT_PERSONAS, TMESA_ID, FECHA_HORA_DESEADA, FECHA_REGISTRO, FECHA_NOTIFICACION, ESTADO, OBSERVACIONES) VALUES (3, 1, 'COMUN', 4, 2, '2025-07-03 19:00:00', '2025-07-02 06:59:44.435', NULL, 'PENDIENTE', 'Solicitud creada para test')
-jul. 02, 2025 6:59:46 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+    <system-err><![CDATA[jul. 02, 2025 6:33:12 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_FILASESPERA(USUARIO_ID, LOCAL_ID, TIPO_RESERVA, CANT_PERSONAS, TMESA_ID, FECHA_HORA_DESEADA, FECHA_REGISTRO, FECHA_NOTIFICACION, ESTADO, OBSERVACIONES) VALUES (3, 1, 'COMUN', 4, 2, '2025-07-03 19:00:00', '2025-07-02 18:33:11.88', NULL, 'PENDIENTE', 'Solicitud creada para test')
+jul. 02, 2025 6:33:13 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
 INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, TIPO_NOTIFICACION, ESTADO) VALUES (3, 'Su solicitud ha sido agregada a la lista de espera. Le notificaremos cuando haya disponibilidad.', 0, 'CONFIRMACION', 'PENDIENTE')
 ]]></system-err>
   </testcase>
-  <testcase name="testInsertarFilaEsperaVIP_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.471">
+  <testcase name="testInsertarFilaEsperaVIP_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.498">
     <system-out><![CDATA[=== Test: Insertar Fila de Espera VIP ===
-Fila de espera VIP creada con ID: 41
+Fila de espera VIP creada con ID: 51
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:59:47 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_FILASESPERA(USUARIO_ID, LOCAL_ID, TIPO_RESERVA, CANT_PERSONAS, TMESA_ID, FECHA_HORA_DESEADA, FECHA_REGISTRO, FECHA_NOTIFICACION, ESTADO, OBSERVACIONES) VALUES (5, 1, 'EVENTO', 20, 3, '2025-07-03 19:00:00', '2025-07-02 06:59:46.931', NULL, 'PENDIENTE', 'Solicitud creada para test')
-jul. 02, 2025 6:59:49 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+    <system-err><![CDATA[jul. 02, 2025 6:33:15 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_FILASESPERA(USUARIO_ID, LOCAL_ID, TIPO_RESERVA, CANT_PERSONAS, TMESA_ID, FECHA_HORA_DESEADA, FECHA_REGISTRO, FECHA_NOTIFICACION, ESTADO, OBSERVACIONES) VALUES (5, 1, 'EVENTO', 20, 3, '2025-07-03 19:00:00', '2025-07-02 18:33:14.366', NULL, 'PENDIENTE', 'Solicitud creada para test')
+jul. 02, 2025 6:33:16 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
 INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, TIPO_NOTIFICACION, ESTADO) VALUES (5, 'Su solicitud ha sido agregada a la lista de espera. Le notificaremos cuando haya disponibilidad.', 0, 'CONFIRMACION', 'PENDIENTE')
 ]]></system-err>
   </testcase>
-  <testcase name="testInsertarFilaEspera_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.002">
+  <testcase name="testInsertarFilaEspera_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.008">
     <system-out><![CDATA[=== Test: Validaciones de Inserción ===
 Todas las validaciones pasaron correctamente
 ]]></system-out>
   </testcase>
-  <testcase name="testObtenerPorId_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.852">
+  <testcase name="testObtenerPorId_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="1.357">
     <system-out><![CDATA[=== Test: Obtener por ID ===
 Fila obtenida correctamente
 ]]></system-out>
@@ -94,43 +94,48 @@ Fila obtenida correctamente
 Validaciones de obtener por ID pasaron correctamente
 ]]></system-out>
   </testcase>
-  <testcase name="testListarPendientesPorPrioridad" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="77.742">
+  <testcase name="testListarPendientesPorPrioridad" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="114.375">
     <system-out><![CDATA[=== Test: Listar Pendientes por Prioridad ===
-Total de solicitudes pendientes: 18
+Total de solicitudes pendientes: 22
 ]]></system-out>
   </testcase>
-  <testcase name="testBuscarSiguienteCompatible" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="77.829">
+  <testcase name="testBuscarSiguienteCompatible" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="100.881">
     <system-out><![CDATA[=== Test: Buscar Siguiente Compatible ===
-Siguiente compatible encontrado: ninguno
+Siguiente compatible encontrado: 32
 ]]></system-out>
   </testcase>
-  <testcase name="testNotificarSiguiente" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="77.285">
+  <testcase name="testNotificarSiguiente" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="103.926">
     <system-out><![CDATA[=== Test: Notificar Siguiente ===
-Notificación enviada: false
+Notificación enviada: true
 ]]></system-out>
+    <system-err><![CDATA[jul. 02, 2025 6:38:35 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_FILASESPERA SET USUARIO_ID=5, LOCAL_ID=1, TIPO_RESERVA='EVENTO', CANT_PERSONAS=20, TMESA_ID=3, FECHA_HORA_DESEADA='2025-07-03 19:00:00', FECHA_REGISTRO='2025-07-02 04:30:15', FECHA_NOTIFICACION='2025-07-02 18:38:34.375', ESTADO='NOTIFICADO', OBSERVACIONES='Solicitud creada para test' WHERE FILA_ID=7
+jul. 02, 2025 6:38:37 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, TIPO_NOTIFICACION, ESTADO) VALUES (5, '¡Buenas noticias! Ahora hay disponibilidad para su reserva en null. Contáctenos para confirmar dentro de las próximas 2 horas.', 0, 'CONFIRMACION', 'PENDIENTE')
+]]></system-err>
   </testcase>
-  <testcase name="testModificar_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.824">
+  <testcase name="testModificar_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.99">
     <system-out><![CDATA[=== Test: Modificar Fila de Espera ===
 Modificación realizada correctamente
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 7:03:44 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_FILASESPERA SET USUARIO_ID=3, LOCAL_ID=1, TIPO_RESERVA='COMUN', CANT_PERSONAS=4, TMESA_ID=2, FECHA_HORA_DESEADA='2025-07-03 19:00:00', FECHA_REGISTRO='2025-07-02 06:59:44', FECHA_NOTIFICACION=NULL, ESTADO='PENDIENTE', OBSERVACIONES='Observaciones modificadas para test' WHERE FILA_ID=40
+    <system-err><![CDATA[jul. 02, 2025 6:38:39 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_FILASESPERA SET USUARIO_ID=3, LOCAL_ID=1, TIPO_RESERVA='COMUN', CANT_PERSONAS=4, TMESA_ID=2, FECHA_HORA_DESEADA='2025-07-03 19:00:00', FECHA_REGISTRO='2025-07-02 18:33:12', FECHA_NOTIFICACION=NULL, ESTADO='PENDIENTE', OBSERVACIONES='Observaciones modificadas para test' WHERE FILA_ID=50
 ]]></system-err>
   </testcase>
-  <testcase name="testModificar_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.0">
+  <testcase name="testModificar_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.001">
     <system-out><![CDATA[=== Test: Validaciones de Modificación ===
 Validaciones de modificación pasaron correctamente
 ]]></system-out>
   </testcase>
-  <testcase name="testEliminar_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.871">
+  <testcase name="testEliminar_Success" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="2.832">
     <system-out><![CDATA[=== Test: Eliminar Fila de Espera (Eliminación Lógica) ===
 Eliminación lógica exitosa
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 7:03:47 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_FILASESPERA SET USUARIO_ID=3, LOCAL_ID=1, TIPO_RESERVA='COMUN', CANT_PERSONAS=4, TMESA_ID=2, FECHA_HORA_DESEADA='2025-07-03 19:00:00', FECHA_REGISTRO='2025-07-02 06:59:44', FECHA_NOTIFICACION=NULL, ESTADO='CANCELADO', OBSERVACIONES='Observaciones modificadas para test' WHERE FILA_ID=40
+    <system-err><![CDATA[jul. 02, 2025 6:38:42 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_FILASESPERA SET USUARIO_ID=3, LOCAL_ID=1, TIPO_RESERVA='COMUN', CANT_PERSONAS=4, TMESA_ID=2, FECHA_HORA_DESEADA='2025-07-03 19:00:00', FECHA_REGISTRO='2025-07-02 18:33:12', FECHA_NOTIFICACION=NULL, ESTADO='CANCELADO', OBSERVACIONES='Observaciones modificadas para test' WHERE FILA_ID=50
 ]]></system-err>
   </testcase>
-  <testcase name="testConfirmarDisponibilidad_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.864">
+  <testcase name="testConfirmarDisponibilidad_Validaciones" classname="pe.edu.pucp.softres.business.FilaEsperaBOTest" time="0.869">
     <system-out><![CDATA[=== Test: Validaciones Confirmar Disponibilidad ===
 Validaciones de confirmación pasaron correctamente
 ]]></system-out>

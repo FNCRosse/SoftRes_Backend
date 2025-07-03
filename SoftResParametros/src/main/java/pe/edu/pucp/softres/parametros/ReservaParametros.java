@@ -75,16 +75,6 @@ public class ReservaParametros {
         this.dniCliente = dniCliente;
     }
 
-    // Método obsoleto mantenido por compatibilidad
-    public String getdniCliente() {
-        return dniCliente;
-    }
-
-    // Método obsoleto mantenido por compatibilidad
-    public void setdniCliente(String dniCliente) {
-        this.dniCliente = dniCliente;
-    }
-
     public Integer getUsuarioId() {
         return usuarioId;
     }

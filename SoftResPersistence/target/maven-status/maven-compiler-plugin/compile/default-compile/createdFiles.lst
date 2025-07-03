@@ -1,5 +1,3 @@
-pe\edu\pucp\softres\daoImp\SedeDAOImpl.class
-pe\edu\pucp\softres\dao\UsuarioDAO.class
 pe\edu\pucp\softres\dao\ComentarioDAO.class
 pe\edu\pucp\softres\daoImp\DAOImplBase$1.class
 pe\edu\pucp\softres\daoImp\ComentarioDAOImpl.class
@@ -10,11 +8,8 @@ pe\edu\pucp\softres\daoImp\util\Columna.class
 pe\edu\pucp\softres\daoImp\HorarioxSedeDAOImpl.class
 pe\edu\pucp\softres\daoImp\ReservaxMesaDAOImpl.class
 pe\edu\pucp\softres\daoImp\util\TipoOperacion.class
-pe\edu\pucp\softres\dao\TipoMesaDAO.class
 pe\edu\pucp\softres\dao\RolDAO.class
-pe\edu\pucp\softres\dao\ReservaDAO.class
 pe\edu\pucp\softres\daoImp\FilaEsperaDAOImpl.class
-pe\edu\pucp\softres\daoImp\UsuarioDAOImpl.class
 pe\edu\pucp\softres\dao\ReporteReservaDAO.class
 pe\edu\pucp\softres\daoImp\MesaDAOImpl.class
 pe\edu\pucp\softres\daoImp\RolDAOImpl.class
@@ -27,13 +22,10 @@ pe\edu\pucp\softres\dao\FilaEsperaDAO.class
 pe\edu\pucp\softres\daoImp\ReporteReservasDAOImpl.class
 pe\edu\pucp\softres\daoImp\NotificacionDAOImpl.class
 pe\edu\pucp\softres\daoImp\TipoDocumentoDAOImpl.class
-pe\edu\pucp\softres\daoImp\TipoMesaDAOImpl.class
 pe\edu\pucp\softres\dao\ReservaxMesaDAO.class
 pe\edu\pucp\softres\dao\LocalDAO.class
 pe\edu\pucp\softres\dao\MotivoCancelacionDAO.class
 pe\edu\pucp\softres\daoImp\DAOImplBase.class
-pe\edu\pucp\softres\dao\SedeDAO.class
 pe\edu\pucp\softres\dao\MesaDAO.class
 pe\edu\pucp\softres\daoImp\MotivoCancelacionDAOImpl.class
-pe\edu\pucp\softres\daoImp\ReservaDAOImpl.class
 pe\edu\pucp\softres\daoImp\ReporteClientesDAOImpl.class

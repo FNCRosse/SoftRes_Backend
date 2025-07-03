@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.UsuarioBOTest" time="15.221" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.UsuarioBOTest" time="17.277" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire12723757563527845385\surefirebooter-20250702064154364_11.jar C:\Users\wilso\AppData\Local\Temp\surefire12723757563527845385 2025-07-02T06-41-49_277-jvmRun1 surefire-20250702064154364_9tmp surefire_1-20250702064154364_10tmp"/>
+    <property name="sun.java.command" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573 2025-07-02T18-32-54_894-jvmRun1 surefire-20250702183259287_9tmp surefire_1-20250702183259287_10tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\test-classes;A:\tarea_academica\SoftRes_Backend\SoftResBusiness\target\classes;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\wilso\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\3.0.1\jakarta.xml.bind-api-3.0.1.jar;C:\Users\wilso\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResModel\target\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\pe\edu\pucp\softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResParametros\target\SoftResParametros-1.0-SNAPSHOT.jar;A:\tarea_academica\SoftRes_Backend\SoftResDBManager\target\SoftResDBManager-1.0-SNAPSHOT.jar;C:\Users\wilso\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\wilso\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\wilso\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\wilso\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\wilso\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\wilso\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;A:\tarea_academica\SoftRes_Backend\SoftResPersistence\target\SoftResPersistence-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire12723757563527845385\surefirebooter-20250702064154364_11.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\wilso\AppData\Local\Temp\surefire9317124001050642573\surefirebooter-20250702183259287_11.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.5+9-LTS-239"/>
@@ -59,24 +59,24 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="2.99">
-    <system-out><![CDATA[Intentando insertar usuario con documento: 57156382 y email: test156382@example.com
-Usuario insertado exitosamente con ID: 21
+  <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="2.983">
+    <system-out><![CDATA[Intentando insertar usuario con documento: 00013174 y email: test13174@example.com
+Usuario insertado exitosamente con ID: 24
 ]]></system-out>
-    <system-err><![CDATA[jul. 02, 2025 6:52:38 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_USUARIOS(ROL_ID, TIPO_DOC_ID, NOMBRE_COMP, NUMERO_DOC, CONTRASENA, EMAIL, TELEFONO, SUELDO, FECHA_CONTRATACION, CANT_RESERVAS, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (3, 3, 'Usuario Test', '57156382', '4gNlWrJeMOQEZjk80sp5vg==', 'test156382@example.com', '999999999', 130.0, '2025-07-02 06:52:36.384', 0, 1, '2025-07-02 06:52:36.384', 'test_insertar', NULL, NULL)
+    <system-err><![CDATA[jul. 02, 2025 6:46:55 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_USUARIOS(ROL_ID, TIPO_DOC_ID, NOMBRE_COMP, NUMERO_DOC, CONTRASENA, EMAIL, TELEFONO, SUELDO, FECHA_CONTRATACION, CANT_RESERVAS, ESTADO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (3, 3, 'Usuario Test', '00013174', '4gNlWrJeMOQEZjk80sp5vg==', 'test13174@example.com', '999999999', 130.0, '2025-07-02 18:46:53.177', 0, 1, '2025-07-02 18:46:53.177', 'test_insertar', NULL, NULL)
 ]]></system-err>
   </testcase>
-  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.923"/>
-  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="4.088">
-    <system-err><![CDATA[jul. 02, 2025 6:52:43 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_USUARIOS SET ROL_ID=3, TIPO_DOC_ID=3, NOMBRE_COMP='Usuario Modificado', NUMERO_DOC='57156382', CONTRASENA='4gNlWrJeMOQEZjk80sp5vg==', EMAIL='test156382@example.com', TELEFONO='999999999', SUELDO=130.0, FECHA_CONTRATACION='2025-07-02 06:52:36', CANT_RESERVAS=0, ESTADO=1, FECHA_CREACION='2025-07-02 06:52:36', USUARIO_CREACION='test_insertar', FECHA_MODIFICACION='2025-07-02 06:52:41.412', USUARIO_MODIFICACION='test_modificacion' WHERE USUARIO_ID=21
+  <testcase name="testObtenerPorId" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.849"/>
+  <testcase name="testModificar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="3.675">
+    <system-err><![CDATA[jul. 02, 2025 6:46:59 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_USUARIOS SET ROL_ID=3, TIPO_DOC_ID=3, NOMBRE_COMP='Usuario Modificado', NUMERO_DOC='00013174', CONTRASENA='4gNlWrJeMOQEZjk80sp5vg==', EMAIL='test13174@example.com', TELEFONO='999999999', SUELDO=130.0, FECHA_CONTRATACION='2025-07-02 18:46:53', CANT_RESERVAS=0, ESTADO=1, FECHA_CREACION='2025-07-02 18:46:53', USUARIO_CREACION='test_insertar', FECHA_MODIFICACION='2025-07-02 18:46:57.853', USUARIO_MODIFICACION='test_modificacion' WHERE USUARIO_ID=24
 ]]></system-err>
   </testcase>
-  <testcase name="testListar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.856">
+  <testcase name="testListar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.857">
     <system-out><![CDATA[=== Test: Listar Usuarios ===
-Buscando usuario con ID: 21
-Total usuarios encontrados: 16
+Buscando usuario con ID: 24
+Total usuarios encontrados: 19
 Usuarios en la lista:
 - ID: 1, Nombre: Juan Pérez, Estado: true, Email: juan.pérez@mail.com
 - ID: 5, Nombre: Pedro Ramírez, Estado: true, Email: pedro.ramírez@mail.com
@@ -86,7 +86,7 @@ Usuarios en la lista:
 - ID: 10, Nombre: Rosa La Cruz, Estado: true, Email: rosita.44.07@gmail.com
 - ID: 11, Nombre: Administrador, Estado: true, Email: wosclb@gmail.com
 - ID: 12, Nombre: Renata Ruiz, Estado: true, Email: renata.ruiz@mail.com
-- ID: 21, Nombre: Usuario Modificado, Estado: true, Email: test156382@example.com
+- ID: 24, Nombre: Usuario Modificado, Estado: true, Email: test13174@example.com
 - ID: 2, Nombre: María Gómez, Estado: false, Email: maria.gomez@mail.com
 - ID: 3, Nombre: Luis Sánchez, Estado: false, Email: luis.sanchez@mail.com
 - ID: 4, Nombre: Ana Torres, Estado: false, Email: ana.torres@mail.com
@@ -94,15 +94,18 @@ Usuarios en la lista:
 - ID: 13, Nombre: Usuario Modificado, Estado: false, Email: test6@example.com
 - ID: 19, Nombre: Usuario Modificado, Estado: false, Email: test625104@example.com
 - ID: 20, Nombre: Usuario Modificado, Estado: false, Email: test387278@example.com
+- ID: 21, Nombre: Usuario Modificado, Estado: false, Email: test156382@example.com
+- ID: 22, Nombre: Usuario Modificado, Estado: false, Email: test258496@example.com
+- ID: 23, Nombre: Usuario Modificado, Estado: false, Email: test989787@example.com
 Usuario encontrado exitosamente en la lista
 ]]></system-out>
   </testcase>
-  <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="3.725">
-    <system-err><![CDATA[jul. 02, 2025 6:52:47 A. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_USUARIOS SET ESTADO = 0, FECHA_MODIFICACION = '2025-07-02 06:52:46.087', USUARIO_MODIFICACION = 'test_eliminar' WHERE USUARIO_ID = 21
+  <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="3.724">
+    <system-err><![CDATA[jul. 02, 2025 6:47:04 P. M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_USUARIOS SET ESTADO = 0, FECHA_MODIFICACION = '2025-07-02 18:47:02.389', USUARIO_MODIFICACION = 'test_eliminar' WHERE USUARIO_ID = 24
 ]]></system-err>
   </testcase>
-  <testcase name="testExisteDocumento" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.939"/>
-  <testcase name="testLogin" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.851"/>
-  <testcase name="testExisteEmail" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.844"/>
+  <testcase name="testExisteDocumento" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="0.845"/>
+  <testcase name="testLogin" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="2.321"/>
+  <testcase name="testExisteEmail" classname="pe.edu.pucp.softres.business.UsuarioBOTest" time="2.018"/>
 </testsuite>

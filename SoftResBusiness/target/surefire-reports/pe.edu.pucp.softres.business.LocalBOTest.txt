@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pe.edu.pucp.softres.business.LocalBOTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.932 s -- in pe.edu.pucp.softres.business.LocalBOTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.805 s -- in pe.edu.pucp.softres.business.LocalBOTest

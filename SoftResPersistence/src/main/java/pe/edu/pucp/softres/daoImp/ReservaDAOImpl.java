@@ -438,7 +438,7 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 .setFechaInicio(reservaParametro.getFechaInicio())
                 .setFechaFin(reservaParametro.getFechaFin())
                 .setIdLocal(reservaParametro.getIdLocal())
-                .setdniCliente(reservaParametro.getdniCliente())
+                .setdniCliente(reservaParametro.getDniCliente())
                 .setUsuarioId(reservaParametro.getUsuarioId())
                 .setEstado(reservaParametro.getEstado())
                 .buildReservaParametros();
@@ -503,9 +503,9 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 this.statement.setNull(6, Types.INTEGER);
             }
             // 7-8 DNI Cliente
-            if (parametros.getdniCliente()!= null) {
-                this.statement.setString(7, parametros.getdniCliente());
-                this.statement.setString(8, parametros.getdniCliente());
+            if (parametros.getDniCliente()!= null) {
+                this.statement.setString(7, parametros.getDniCliente());
+                this.statement.setString(8, parametros.getDniCliente());
             } else {
                 this.statement.setNull(7, Types.VARCHAR);
                 this.statement.setNull(8, Types.VARCHAR);

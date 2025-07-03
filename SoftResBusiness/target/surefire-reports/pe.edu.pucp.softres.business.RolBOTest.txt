@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pe.edu.pucp.softres.business.RolBOTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.763 s -- in pe.edu.pucp.softres.business.RolBOTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.780 s -- in pe.edu.pucp.softres.business.RolBOTest
