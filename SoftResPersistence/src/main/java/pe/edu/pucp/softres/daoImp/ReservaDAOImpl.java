@@ -468,7 +468,7 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 + "    (? IS NULL OR r.ESTADO = ?) "
                 + "    AND (? IS NULL OR r.TIPO_RESERVA = ?) "
                 + "    AND (? IS NULL OR r.LOCAL_ID = ?) "
-                + "    AND (? IS NULL OR u.NUMERO_DOC = ?) " 
+                + "    AND (? IS NULL OR u.NUMERO_DOC = ?) "
                 + "    AND (? IS NULL OR r.USUARIO_ID = ?) "
                 + "    AND ((? IS NULL AND ? IS NULL) OR (r.FECHA_HORA_REGISTRO BETWEEN ? AND ?)) "
                 + "ORDER BY r.ESTADO DESC, r.FECHA_HORA_REGISTRO ASC";
@@ -503,7 +503,7 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 this.statement.setNull(6, Types.INTEGER);
             }
             // 7-8 DNI Cliente
-            if (parametros.getDniCliente()!= null) {
+            if (parametros.getDniCliente() != null) {
                 this.statement.setString(7, parametros.getDniCliente());
                 this.statement.setString(8, parametros.getDniCliente());
             } else {
@@ -547,15 +547,15 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
         eliminarComentariosPorReserva(this.reserva.getIdReserva());
         return super.eliminar();
     }
-    
+
     @Override
     protected String generarSQLParaEliminacion() {
-        String sql = "UPDATE RES_RESERVAS " +
-             "SET ESTADO = ? " +
-             ", FECHA_MODIFICACION = ? " +
-             ", USUARIO_MODIFICACION = ? " +
-             ", MOTIVO_CANCELACION_ID = ? " +
-             " WHERE RESERVA_ID = ?";
+        String sql = "UPDATE RES_RESERVAS "
+                + "SET ESTADO = ? "
+                + ", FECHA_MODIFICACION = ? "
+                + ", USUARIO_MODIFICACION = ? "
+                + ", MOTIVO_CANCELACION_ID = ? "
+                + " WHERE RESERVA_ID = ?";
         return sql;
     }
 
@@ -571,71 +571,72 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
     }
 
     @Override
-    public Integer asignarMesas(ReservaDTO reserva) {
-        int mesasAsignadas = 0;
+    public boolean intentarAsignarMesas(ReservaDTO reserva) {
+        // Esta consulta es una obra de arte:
+        // 1. Selecciona las mesas DISPONIBLES del LOCAL y TIPO correctos.
+        // 2. EXCLUYE las mesas que ya están asignadas a otra reserva que se cruza en el tiempo.
+        // 3. Limita el resultado al número de mesas que se necesitan.
+        String sql = "SELECT MESA_ID FROM RES_MESAS WHERE ESTADO = 'DISPONIBLE' AND LOCAL_ID = ? AND TMESA_ID = ? "
+                + "AND MESA_ID NOT IN (SELECT MESA_ID FROM RES_RESERVAS_x_MESAS rxm "
+                + "INNER JOIN RES_RESERVAS r ON rxm.RESERVA_ID = r.RESERVA_ID "
+                + "WHERE r.ESTADO IN ('CONFIRMADA', 'PENDIENTE') "
+                + "AND r.FECHA_HORA_REGISTRO BETWEEN ? AND ?) "
+                + "LIMIT ?";
 
-        String sqlSeleccionarMesas
-                = "SELECT m.MESA_ID, m.CAPACIDAD, m.TMESA_ID "
-                + "FROM RES_MESAS m "
-                + "WHERE m.ESTADO = 'DISPONIBLE' "
-                + "AND m.LOCAL_ID = ? "
-                + "AND m.TMESA_ID = ? "
-                + "AND m.MESA_ID NOT IN ( "
-                + "  SELECT rxm.MESA_ID "
-                + "  FROM RES_RESERVAS_x_MESAS rxm "
-                + "  JOIN RES_RESERVAS r ON r.RESERVA_ID = rxm.RESERVA_ID "
-                + "  WHERE r.FECHA_HORA_REGISTRO BETWEEN ? AND ? "
-                + "  AND r.ESTADO IN ('PENDIENTE', 'CONFIRMADA') "
-                + ") "
-                + "ORDER BY m.CAPACIDAD ASC";
+        String sqlInsert = "INSERT INTO RES_RESERVAS_x_MESAS (RESERVA_ID, MESA_ID) VALUES (?, ?)";
+        String sqlUpdateMesa = "UPDATE RES_MESAS SET ESTADO = 'RESERVADA' WHERE MESA_ID = ?";
 
-        String sqlInsertarAsignacion
-                = "INSERT INTO RES_RESERVAS_X_MESAS (RESERVA_ID, MESA_ID) VALUES (?, ?)";
-        
-        String sqlActualizarEstadoMesa
-                = "UPDATE RES_MESAS SET ESTADO = 'RESERVADA' WHERE MESA_ID = ?";
+        List<Integer> idsMesasDisponibles = new ArrayList<>();
 
-        try (Connection conn = DBManager.getInstance().getConnection(); 
-             PreparedStatement stmtMesas = conn.prepareStatement(sqlSeleccionarMesas); 
-             PreparedStatement stmtInsert = conn.prepareStatement(sqlInsertarAsignacion);
-             PreparedStatement stmtUpdate = conn.prepareStatement(sqlActualizarEstadoMesa)) {
+        try (Connection conn = DBManager.getInstance().getConnection(); PreparedStatement stmtSelect = conn.prepareStatement(sql)) {
 
-            // Calcular ventana de tiempo (2 horas antes y después para evitar conflictos)
-            long dosHoras = 2 * 60 * 60 * 1000; // 2 horas en milisegundos
-            Timestamp fechaInicio = new Timestamp(reserva.getFechaHoraRegistro().getTime() - dosHoras);
-            Timestamp fechaFin = new Timestamp(reserva.getFechaHoraRegistro().getTime() + dosHoras);
+            // Ventana de tiempo de 2 horas para evitar solapamientos
+            Timestamp inicioVentana = new Timestamp(reserva.getFechaHoraRegistro().getTime() - (2 * 60 * 60 * 1000));
+            Timestamp finVentana = new Timestamp(reserva.getFechaHoraRegistro().getTime() + (2 * 60 * 60 * 1000));
 
-            stmtMesas.setInt(1, reserva.getLocal().getIdLocal());
-            stmtMesas.setInt(2, reserva.getTipoMesa().getIdTipoMesa());
-            stmtMesas.setTimestamp(3, fechaInicio);
-            stmtMesas.setTimestamp(4, fechaFin);
+            stmtSelect.setInt(1, reserva.getLocal().getIdLocal());
+            stmtSelect.setInt(2, reserva.getTipoMesa().getIdTipoMesa());
+            stmtSelect.setTimestamp(3, inicioVentana);
+            stmtSelect.setTimestamp(4, finVentana);
+            stmtSelect.setInt(5, reserva.getNumeroMesas());
 
-            ResultSet rs = stmtMesas.executeQuery();
-            int personasRestantes = reserva.getCantidadPersonas();
-            int mesasNecesarias = reserva.getNumeroMesas() != null ? reserva.getNumeroMesas() : 1;
+            try (ResultSet rs = stmtSelect.executeQuery()) {
+                while (rs.next()) {
+                    idsMesasDisponibles.add(rs.getInt("MESA_ID"));
+                }
+            }
 
-            while (rs.next() && personasRestantes > 0 && mesasAsignadas < mesasNecesarias) {
-                int mesaId = rs.getInt("MESA_ID");
-                int capacidad = rs.getInt("CAPACIDAD");
+            // Si no encontramos suficientes mesas, la operación falla.
+            if (idsMesasDisponibles.size() < reserva.getNumeroMesas()) {
+                return false;
+            }
 
-                // Insertar en tabla de relación
-                stmtInsert.setInt(1, reserva.getIdReserva());
-                stmtInsert.setInt(2, mesaId);
-                stmtInsert.executeUpdate();
-                
-                // Actualizar estado de la mesa
-                stmtUpdate.setInt(1, mesaId);
-                stmtUpdate.executeUpdate();
+            // Si encontramos mesas, las asignamos dentro de una transacción.
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmtInsertAsignacion = conn.prepareStatement(sqlInsert); PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdateMesa)) {
 
-                personasRestantes -= capacidad;
-                mesasAsignadas++;
+                for (Integer idMesa : idsMesasDisponibles) {
+                    // Asignar en RES_RESERVAS_x_MESAS
+                    stmtInsertAsignacion.setInt(1, reserva.getIdReserva());
+                    stmtInsertAsignacion.setInt(2, idMesa);
+                    stmtInsertAsignacion.addBatch();
+
+                    // Actualizar estado de la mesa a RESERVADA
+                    stmtUpdate.setInt(1, idMesa);
+                    stmtUpdate.addBatch();
+                }
+                stmtInsertAsignacion.executeBatch();
+                stmtUpdate.executeBatch();
+                conn.commit();
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, e);
-            return 0;
+            Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, "Error al intentar asignar mesas", e);
+            return false;
         }
-
-        return mesasAsignadas;
     }
 }
