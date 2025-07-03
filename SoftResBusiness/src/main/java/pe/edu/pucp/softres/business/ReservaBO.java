@@ -445,14 +445,14 @@ public class ReservaBO {
             }
 
             // Validaciones de modificación
-            validarModificacion(reserva, reservaOriginal, usuario);
+            //validarModificacion(reserva, reservaOriginal, usuario);
 
             // Si hay cambio de fecha/hora, validar disponibilidad
-            if (!sonFechasIguales(reservaOriginal.getFechaHoraRegistro(), reserva.getFechaHoraRegistro())) {
-                if (!verificarDisponibilidadMesas(reserva)) {
-                    throw new RuntimeException("No hay disponibilidad para la nueva fecha/hora solicitada");
-                }
-            }
+//            if (!sonFechasIguales(reservaOriginal.getFechaHoraRegistro(), reserva.getFechaHoraRegistro())) {
+//                if (!verificarDisponibilidadMesas(reserva)) {
+//                    throw new RuntimeException("No hay disponibilidad para la nueva fecha/hora solicitada");
+//                }
+//            }
 
             // Actualizar campos de auditoría
             reserva.setFechaModificacion(new Date());
