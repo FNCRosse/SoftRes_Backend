@@ -4,11 +4,12 @@
  */
 package pe.edu.pucp.softres.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- *
+ * DTO para la tabla RES_MESAS
+ * Representa una mesa en un local específico
+ * 
  * @author frank
  */
 public class MesaDTO {
@@ -54,15 +55,20 @@ public class MesaDTO {
         this.y = y;
     }
 
+    // Constructor copia
     public MesaDTO(MesaDTO original) {
         this.idMesa = original.idMesa;
-        this.local = original.local;
-        this.tipoMesa = original.tipoMesa;
+        this.local = original.local != null ? new LocalDTO(original.local) : null;
+        this.tipoMesa = original.tipoMesa != null ? new TipoMesaDTO(original.tipoMesa) : null;
         this.numeroMesa = original.numeroMesa;
         this.capacidad = original.capacidad;
         this.estado = original.estado;
         this.x = original.x;
         this.y = original.y;
+        this.fechaCreacion = original.fechaCreacion != null ? new Date(original.fechaCreacion.getTime()) : null;
+        this.usuarioCreacion = original.usuarioCreacion;
+        this.fechaModificacion = original.fechaModificacion != null ? new Date(original.fechaModificacion.getTime()) : null;
+        this.usuarioModificacion = original.usuarioModificacion;
     }
 
     public Integer getIdMesa() {
@@ -159,5 +165,91 @@ public class MesaDTO {
 
     public void setUsuarioModificacion(String usuarioModificacion) {
         this.usuarioModificacion = usuarioModificacion;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa está disponible
+     * @return true si el estado es DISPONIBLE
+     */
+    public boolean estaDisponible() {
+        return this.estado == EstadoMesa.DISPONIBLE;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa está reservada
+     * @return true si el estado es RESERVADA
+     */
+    public boolean estaReservada() {
+        return this.estado == EstadoMesa.RESERVADA;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa está en uso
+     * @return true si el estado es EN_USO
+     */
+    public boolean estaEnUso() {
+        return this.estado == EstadoMesa.EN_USO;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa está en mantenimiento
+     * @return true si el estado es EN_MANTENIMIENTO
+     */
+    public boolean estaEnMantenimiento() {
+        return this.estado == EstadoMesa.EN_MANTENIMIENTO;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa está desechada
+     * @return true si el estado es DESECHADA
+     */
+    public boolean estaDesechada() {
+        return this.estado == EstadoMesa.DESECHADA;
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa puede ser asignada
+     * @return true si la mesa está disponible y no desechada
+     */
+    public boolean puedeSerAsignada() {
+        return this.estado == EstadoMesa.DISPONIBLE;
+    }
+
+    /**
+     * Método de utilidad para calcular la distancia entre esta mesa y otra
+     * @param otraMesa Mesa con la que comparar
+     * @return distancia euclidiana entre las dos mesas
+     */
+    public double calcularDistancia(MesaDTO otraMesa) {
+        if (otraMesa == null || this.x == null || this.y == null || 
+            otraMesa.x == null || otraMesa.y == null) {
+            return Double.MAX_VALUE;
+        }
+        
+        int deltaX = this.x - otraMesa.x;
+        int deltaY = this.y - otraMesa.y;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    /**
+     * Método de utilidad para verificar si la mesa tiene capacidad suficiente
+     * @param personasRequeridas número de personas que necesitan mesa
+     * @return true si la capacidad es mayor o igual al número requerido
+     */
+    public boolean tieneCapacidadPara(int personasRequeridas) {
+        return this.capacidad != null && this.capacidad >= personasRequeridas;
+    }
+
+    @Override
+    public String toString() {
+        return "MesaDTO{" +
+                "idMesa=" + idMesa +
+                ", local=" + (local != null ? local.getIdLocal() : "null") +
+                ", tipoMesa=" + (tipoMesa != null ? tipoMesa.getIdTipoMesa() : "null") +
+                ", numeroMesa='" + numeroMesa + '\'' +
+                ", capacidad=" + capacidad +
+                ", estado=" + estado +
+                ", posicion=(" + x + "," + y + ")" +
+                '}';
     }
 }

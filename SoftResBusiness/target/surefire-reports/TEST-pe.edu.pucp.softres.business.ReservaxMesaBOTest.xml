@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.034" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.268" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Users\Rosse\AppData\Local\Temp\surefire12934841163698910698\surefirebooter-20250629175519371_3.jar C:\Users\Rosse\AppData\Local\Temp\surefire12934841163698910698 2025-06-29T17-55-19_217-jvmRun1 surefire-20250629175519371_1tmp surefire_0-20250629175519371_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Rosse\AppData\Local\Temp\surefire13049772111405319483\surefirebooter-20250702164436998_3.jar C:\Users\Rosse\AppData\Local\Temp\surefire13049772111405319483 2025-07-02T16-44-36_800-jvmRun1 surefire-20250702164436998_1tmp surefire_0-20250702164436998_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Rosse\Downloads\SoftRes_Backend_v13\SoftRes_Backend\SoftResBusiness\target\test-classes;C:\Users\Rosse\Downloads\SoftRes_Backend_v13\SoftRes_Backend\SoftResBusiness\target\classes;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.0\jackson-annotations-2.19.0.jar;C:\Users\Rosse\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\3.0.1\jakarta.xml.bind-api-3.0.1.jar;C:\Users\Rosse\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResModel\1.0-SNAPSHOT\SoftResModel-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResParametros\1.0-SNAPSHOT\SoftResParametros-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResDBManager\1.0-SNAPSHOT\SoftResDBManager-1.0-SNAPSHOT.jar;C:\Users\Rosse\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\Rosse\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\Rosse\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Rosse\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Rosse\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\Rosse\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\Rosse\.m2\repository\pe\edu\pucp\Softres\SoftResPersistence\1.0-SNAPSHOT\SoftResPersistence-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Rosse\AppData\Local\Temp\surefire12934841163698910698\surefirebooter-20250629175519371_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Rosse\AppData\Local\Temp\surefire13049772111405319483\surefirebooter-20250702164436998_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -59,18 +59,168 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testInsertar" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.018">
-    <system-err><![CDATA[jun 29, 2025 5:55:21 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_RESERVAS_x_MESAS(RESERVA_ID, MESA_ID) VALUES (2, 2)
-jun 29, 2025 5:55:21 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: DELETE FROM RES_RESERVAS_x_MESAS WHERE RESERVA_ID = 2 AND MESA_ID =2 
+  <testcase name="testCrearReservaParaPruebas" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.061">
+    <system-out><![CDATA[=== Test: Crear Reserva para Pruebas ===
+Verificación de disponibilidad: true (Mesas necesarias: 1, Disponibles: 5, Conflicto horario: false)
+=== DEBUG asignarMesasAReserva ===
+reservaId: 14
+reserva: not null
+Reserva verificada: ID=14 existe en BD
+Local ID: 1
+Tipo Mesa ID: 1
+Número de mesas necesarias: 1
+Buscando mesas con parámetros: Local=1, Estado=DISPONIBLE, TipoMesa=1
+Mesas encontradas: 5
+Iniciando asignación de 1 mesa(s)
+Procesando mesa 1 - M-101
+Resultado modificar mesa: 1
+Insertando relación: reserva=14, mesa=1
+Resultado insertar relación: 1
+Mesa 1 asignada a reserva 14
+Asignación exitosa. Mesas asignadas: 1/1
+Mesas asignadas exitosamente para la reserva 14
+Reserva insertada exitosamente con ID: 14
+Reserva creada con ID: 14
+]]></system-out>
+    <system-err><![CDATA[jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_RESERVAS(USUARIO_ID, LOCAL_ID, FILA_ID, TIPO_RESERVA, FECHA_HORA_REGISTRO, CANT_PERSONAS, TMESA_ID, NUM_MESAS, OBSERVACIONES, ESTADO, MOTIVO_CANCELACION_ID, NOMBRE_EVENTO, DESCP_EVENTO, FECHA_CREACION, USUARIO_CREACION, FECHA_MODIFICACION, USUARIO_MODIFICACION) VALUES (2, 1, NULL, 'COMUN', '2025-07-03 19:00:00', 2, 1, 1, 'Reserva para test', 'PENDIENTE', NULL, NULL, NULL, '2025-07-02 16:44:39.78', 'test_system', NULL, NULL)
+jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-101', CAPACIDAD=2, ESTADO='RESERVADA', X=8, Y=4, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:39.817', USUARIO_MODIFICACION='sistema_reservas' WHERE MESA_ID=1
+jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_RESERVAS_x_MESAS(RESERVA_ID, MESA_ID) VALUES (14, 1)
+jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_NOTIFICACIONES(USUARIO_ID, MENSAJE, LEIDA, TIPO_NOTIFICACION, ESTADO) VALUES (2, 'Su reserva ha sido registrada exitosamente para el Thu Jul 03 19:00:00 PET 2025', 0, 'CONFIRMACION', 'PENDIENTE')
 ]]></system-err>
   </testcase>
-  <testcase name="testEliminar" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.014">
-    <system-err><![CDATA[jun 29, 2025 5:55:21 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_RESERVAS_x_MESAS(RESERVA_ID, MESA_ID) VALUES (2, 2)
-jun 29, 2025 5:55:21 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
-INFO: com.mysql.cj.jdbc.CallableStatement: DELETE FROM RES_RESERVAS_x_MESAS WHERE RESERVA_ID = 2 AND MESA_ID =2 
+  <testcase name="testVerificarDisponibilidadMesas_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.009">
+    <system-out><![CDATA[=== Test: Verificar Disponibilidad de Mesas ===
+Disponibilidad confirmada: 4 mesas disponibles para 1 necesarias
+Disponibilidad verificada correctamente
+]]></system-out>
+  </testcase>
+  <testcase name="testVerificarDisponibilidadMesas_Validaciones" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.001">
+    <system-out><![CDATA[=== Test: Validaciones Verificar Disponibilidad ===
+Validaciones de disponibilidad pasaron correctamente
+]]></system-out>
+    <system-err><![CDATA[Reserva es null para verificar disponibilidad
+Local no especificado para verificar disponibilidad
+Tipo de mesa no especificado para verificar disponibilidad
+]]></system-err>
+  </testcase>
+  <testcase name="testAsignarMesasAReserva_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.04">
+    <system-out><![CDATA[=== Test: Asignar Mesas a Reserva ===
+=== DEBUG asignarMesasAReserva ===
+reservaId: 14
+reserva: not null
+Reserva verificada: ID=14 existe en BD
+Local ID: 1
+Tipo Mesa ID: 1
+Número de mesas necesarias: 1
+Buscando mesas con parámetros: Local=1, Estado=DISPONIBLE, TipoMesa=1
+Mesas encontradas: 4
+Iniciando asignación de 1 mesa(s)
+Procesando mesa 2 - M-102
+Resultado modificar mesa: 1
+Insertando relación: reserva=14, mesa=2
+Resultado insertar relación: 1
+Mesa 2 asignada a reserva 14
+Asignación exitosa. Mesas asignadas: 1/1
+Obtenidas 2 mesas para reserva 14
+Mesas asignadas correctamente: 2
+]]></system-out>
+    <system-err><![CDATA[jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-102', CAPACIDAD=2, ESTADO='RESERVADA', X=8, Y=5, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:39.864', USUARIO_MODIFICACION='sistema_reservas' WHERE MESA_ID=2
+jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: INSERT INTO RES_RESERVAS_x_MESAS(RESERVA_ID, MESA_ID) VALUES (14, 2)
+]]></system-err>
+  </testcase>
+  <testcase name="testAsignarMesasAReserva_Validaciones" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.002">
+    <system-out><![CDATA[=== Test: Validaciones Asignar Mesas ===
+=== DEBUG asignarMesasAReserva ===
+reservaId: null
+reserva: not null
+=== DEBUG asignarMesasAReserva ===
+reservaId: -1
+reserva: not null
+=== DEBUG asignarMesasAReserva ===
+reservaId: 999
+reserva: null
+Validaciones de asignación pasaron correctamente
+]]></system-out>
+    <system-err><![CDATA[ID de reserva inválido: null
+ID de reserva inválido: -1
+Datos de reserva son null
+]]></system-err>
+  </testcase>
+  <testcase name="testObtenerMesasDeReserva_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.018">
+    <system-out><![CDATA[=== Test: Obtener Mesas de Reserva ===
+Obtenidas 2 mesas para reserva 14
+Mesas obtenidas correctamente: 2
+]]></system-out>
+  </testcase>
+  <testcase name="testObtenerMesasDeReserva_Validaciones" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.007">
+    <system-out><![CDATA[=== Test: Validaciones Obtener Mesas ===
+Obtenidas 0 mesas para reserva 99999
+Validaciones de obtener mesas pasaron correctamente
+]]></system-out>
+    <system-err><![CDATA[ID de reserva inválido para obtener mesas: null
+ID de reserva inválido para obtener mesas: -1
+]]></system-err>
+  </testcase>
+  <testcase name="testCambiarEstadoMesasReserva_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.046">
+    <system-out><![CDATA[=== Test: Cambiar Estado de Mesas ===
+Cambio de estado exitoso para reserva 14 a estado EN_USO
+Obtenidas 2 mesas para reserva 14
+Estado de mesas cambiado correctamente
+]]></system-out>
+    <system-err><![CDATA[jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-101', CAPACIDAD=2, ESTADO='EN_USO', X=8, Y=4, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:39.934', USUARIO_MODIFICACION='sistema_reservas' WHERE MESA_ID=1
+jul 02, 2025 4:44:39 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-102', CAPACIDAD=2, ESTADO='EN_USO', X=8, Y=5, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:39.945', USUARIO_MODIFICACION='sistema_reservas' WHERE MESA_ID=2
+]]></system-err>
+  </testcase>
+  <testcase name="testCambiarEstadoMesasReserva_Validaciones" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.001">
+    <system-out><![CDATA[=== Test: Validaciones Cambiar Estado ===
+Validaciones de cambio de estado pasaron correctamente
+]]></system-out>
+    <system-err><![CDATA[ID de reserva inválido para cambiar estado: null
+Estado no puede ser null
+]]></system-err>
+  </testcase>
+  <testcase name="testObtenerEstadisticasOcupacion_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.026">
+    <system-out><![CDATA[=== Test: Obtener Estadísticas de Ocupación ===
+Estadísticas obtenidas para local 1
+Estadísticas obtenidas correctamente
+DISPONIBLE: 6
+RESERVADA: 0
+EN_USO: 3
+EN_MANTENIMIENTO: 0
+DESECHADA: 0
+]]></system-out>
+  </testcase>
+  <testcase name="testLiberarMesasDeReserva_Success" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.042">
+    <system-out><![CDATA[=== Test: Liberar Mesas de Reserva ===
+Liberación de mesas exitosa para reserva 14
+Obtenidas 0 mesas para reserva 14
+Mesas liberadas correctamente
+]]></system-out>
+    <system-err><![CDATA[jul 02, 2025 4:44:40 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-101', CAPACIDAD=2, ESTADO='DISPONIBLE', X=8, Y=4, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:40.005', USUARIO_MODIFICACION='sistema_liberacion' WHERE MESA_ID=1
+jul 02, 2025 4:44:40 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: DELETE FROM RES_RESERVAS_x_MESAS WHERE RESERVA_ID = 14 AND MESA_ID = 1
+jul 02, 2025 4:44:40 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: UPDATE RES_MESAS SET LOCAL_ID=1, TMESA_ID=1, NUMEROMESA='M-102', CAPACIDAD=2, ESTADO='DISPONIBLE', X=8, Y=5, FECHA_CREACION='2024-02-01 00:00:00', USUARIO_CREACION='admin@empresa.com', FECHA_MODIFICACION='2025-07-02 16:44:40.02', USUARIO_MODIFICACION='sistema_liberacion' WHERE MESA_ID=2
+jul 02, 2025 4:44:40 P.M. pe.edu.pucp.softres.daoImp.DAOImplBase ejecutarModificacionEnBD
+INFO: com.mysql.cj.jdbc.CallableStatement: DELETE FROM RES_RESERVAS_x_MESAS WHERE RESERVA_ID = 14 AND MESA_ID = 2
+]]></system-err>
+  </testcase>
+  <testcase name="testLiberarMesasDeReserva_Validaciones" classname="pe.edu.pucp.softres.business.ReservaxMesaBOTest" time="0.007">
+    <system-out><![CDATA[=== Test: Validaciones Liberar Mesas ===
+No hay mesas asignadas a la reserva 99999
+Validaciones de liberación pasaron correctamente
+]]></system-out>
+    <system-err><![CDATA[ID de reserva inválido para liberar mesas: null
+ID de reserva inválido para liberar mesas: -1
 ]]></system-err>
   </testcase>
 </testsuite>

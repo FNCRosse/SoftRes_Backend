@@ -91,14 +91,14 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
             this.statement.setNull(4, Types.VARCHAR);
         }
         // Fecha-Hora
-        if (this.reserva.getFecha_Hora() != null) {
-            this.statement.setObject(5, this.reserva.getFecha_Hora());
+        if (this.reserva.getFechaHoraRegistro() != null) {
+            this.statement.setObject(5, this.reserva.getFechaHoraRegistro());
         } else {
             this.statement.setNull(5, Types.TIMESTAMP);
         }
         // Cantidad personas
-        if (this.reserva.getCantidad_personas() != null) {
-            this.statement.setInt(6, this.reserva.getCantidad_personas());
+        if (this.reserva.getCantidadPersonas() != null) {
+            this.statement.setInt(6, this.reserva.getCantidadPersonas());
         } else {
             this.statement.setNull(6, Types.INTEGER);
         }
@@ -198,41 +198,107 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
 
         UsuariosDTO usuario = new UsuariosDTO();
         usuario.setIdUsuario(this.resultSet.getInt("USUARIO_ID"));
+        // Intentar obtener campos con JOIN si están disponibles
+        try {
+            usuario.setNombreComp(this.resultSet.getString("NOMBRE_USUARIO"));
+            usuario.setNumeroDocumento(this.resultSet.getString("NUMERO_DOC"));
+        } catch (SQLException e) {
+            // Los campos no están disponibles, usar solo el ID
+        }
         this.reserva.setUsuario(usuario);
 
         LocalDTO local = new LocalDTO();
         local.setIdLocal(this.resultSet.getInt("LOCAL_ID"));
+        // Intentar obtener nombre si está disponible
+        try {
+            local.setNombre(this.resultSet.getString("NOMBRE_LOCAL"));
+        } catch (SQLException e) {
+            // Campo no disponible
+        }
         this.reserva.setLocal(local);
 
-        FilaEsperaDTO filaEspera = new FilaEsperaDTO();
-        filaEspera.setIdFila(this.resultSet.getInt("FILA_ID"));
-        this.reserva.setFilaEspera(filaEspera);
+        // FilaEspera puede ser null
+        try {
+            int filaId = this.resultSet.getInt("FILA_ID");
+            if (!this.resultSet.wasNull()) {
+                FilaEsperaDTO filaEspera = new FilaEsperaDTO();
+                filaEspera.setIdFila(filaId);
+                try {
+                    String estadoFila = this.resultSet.getString("ESTADO_FILA");
+                    filaEspera.setEstado(estadoFila != null ? EstadoFilaEspera.valueOf(estadoFila) : null);
+                } catch (SQLException e) {
+                    // Campo no disponible
+                }
+                this.reserva.setFilaEspera(filaEspera);
+            }
+        } catch (SQLException e) {
+            // FILA_ID no disponible
+            this.reserva.setFilaEspera(null);
+        }
 
         String tipoReservaStr = this.resultSet.getString("TIPO_RESERVA");
         this.reserva.setTipoReserva(tipoReservaStr != null ? TipoReserva.valueOf(tipoReservaStr) : null);
 
         Timestamp tsRegistro = this.resultSet.getTimestamp("FECHA_HORA_REGISTRO");
-        this.reserva.setFecha_Hora(tsRegistro);
+        this.reserva.setFechaHoraRegistro(tsRegistro);
 
-        this.reserva.setCantidad_personas(this.resultSet.getInt("CANT_PERSONAS"));
+        this.reserva.setCantidadPersonas(this.resultSet.getInt("CANT_PERSONAS"));
 
         TipoMesaDTO tipoMesa = new TipoMesaDTO();
         tipoMesa.setIdTipoMesa(this.resultSet.getInt("TMESA_ID"));
+        // Intentar obtener nombre si está disponible
+        try {
+            tipoMesa.setNombre(this.resultSet.getString("NOMBRE_TIPO_MESA"));
+        } catch (SQLException e) {
+            // Campo no disponible
+        }
         this.reserva.setTipoMesa(tipoMesa);
 
         this.reserva.setNumeroMesas(this.resultSet.getInt("NUM_MESAS"));
         this.reserva.setObservaciones(this.resultSet.getString("OBSERVACIONES"));
 
-        String estadoStr = this.resultSet.getString("ESTADO");
+        // Intentar ambos nombres de columna para el estado
+        String estadoStr = null;
+        try {
+            estadoStr = this.resultSet.getString("ESTADO_RESERVA");
+        } catch (SQLException e) {
+            try {
+                estadoStr = this.resultSet.getString("ESTADO");
+            } catch (SQLException e2) {
+                // Ninguno disponible
+            }
+        }
         this.reserva.setEstado(estadoStr != null ? EstadoReserva.valueOf(estadoStr) : null);
 
-        int motivoId = this.resultSet.getInt("MOTIVO_CANCELACION_ID");
-        if (!this.resultSet.wasNull()) {
-            MotivosCancelacionDTO motivo = new MotivosCancelacionDTO();
-            motivo.setIdMotivo(motivoId);
-            this.reserva.setMotivoCancelacion(motivo);
-        } else {
-            this.reserva.setMotivoCancelacion(null);
+        // Motivo de cancelación
+        try {
+            int motivoId = this.resultSet.getInt("MOTIVO_ID");
+            if (!this.resultSet.wasNull()) {
+                MotivosCancelacionDTO motivo = new MotivosCancelacionDTO();
+                motivo.setIdMotivo(motivoId);
+                try {
+                    motivo.setDescripcion(this.resultSet.getString("MOTIVO_CANCELACION"));
+                } catch (SQLException e) {
+                    // Descripción no disponible
+                }
+                this.reserva.setMotivoCancelacion(motivo);
+            } else {
+                this.reserva.setMotivoCancelacion(null);
+            }
+        } catch (SQLException e) {
+            // Intentar con el nombre original
+            try {
+                int motivoId = this.resultSet.getInt("MOTIVO_CANCELACION_ID");
+                if (!this.resultSet.wasNull()) {
+                    MotivosCancelacionDTO motivo = new MotivosCancelacionDTO();
+                    motivo.setIdMotivo(motivoId);
+                    this.reserva.setMotivoCancelacion(motivo);
+                } else {
+                    this.reserva.setMotivoCancelacion(null);
+                }
+            } catch (SQLException e2) {
+                this.reserva.setMotivoCancelacion(null);
+            }
         }
 
         this.reserva.setNombreEvento(this.resultSet.getString("NOMBRE_EVENTO"));
@@ -274,9 +340,9 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
         this.reserva.setTipoReserva(tipoReservaStr != null ? TipoReserva.valueOf(tipoReservaStr) : null);
 
         Timestamp tsRegistro = this.resultSet.getTimestamp("FECHA_HORA_REGISTRO");
-        this.reserva.setFecha_Hora(tsRegistro);
+        this.reserva.setFechaHoraRegistro(tsRegistro);
 
-        this.reserva.setCantidad_personas(this.resultSet.getInt("CANT_PERSONAS"));
+        this.reserva.setCantidadPersonas(this.resultSet.getInt("CANT_PERSONAS"));
 
         TipoMesaDTO tipoMesa = new TipoMesaDTO();
         tipoMesa.setIdTipoMesa(this.resultSet.getInt("TMESA_ID"));
@@ -340,6 +406,27 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
     }
 
     @Override
+    protected String generarSQLParaObtenerPorId() {
+        String sql = "SELECT "
+                + "    r.RESERVA_ID, r.TIPO_RESERVA, r.FECHA_HORA_REGISTRO, r.CANT_PERSONAS, r.NUM_MESAS, "
+                + "    r.OBSERVACIONES, r.NOMBRE_EVENTO, r.DESCP_EVENTO, r.ESTADO AS ESTADO_RESERVA, "
+                + "    r.FECHA_CREACION, r.USUARIO_CREACION, r.FECHA_MODIFICACION, r.USUARIO_MODIFICACION, "
+                + "    u.USUARIO_ID, u.NOMBRE_COMP AS NOMBRE_USUARIO, u.NUMERO_DOC, "
+                + "    l.LOCAL_ID, l.NOMBRE AS NOMBRE_LOCAL, "
+                + "    c.MOTIVO_ID, c.DESCRIPCION AS MOTIVO_CANCELACION, "
+                + "    tm.TMESA_ID, tm.NOMBRE AS NOMBRE_TIPO_MESA, "
+                + "    fe.FILA_ID, fe.ESTADO AS ESTADO_FILA "
+                + "FROM RES_RESERVAS r "
+                + "INNER JOIN RES_USUARIOS u ON r.USUARIO_ID = u.USUARIO_ID "
+                + "INNER JOIN RES_LOCALES l ON r.LOCAL_ID = l.LOCAL_ID "
+                + "INNER JOIN RES_TIPOS_MESAS tm ON r.TMESA_ID = tm.TMESA_ID "
+                + "LEFT JOIN RES_MOTIVOS_CANCELACION c ON r.MOTIVO_CANCELACION_ID = c.MOTIVO_ID "
+                + "LEFT JOIN RES_FILASESPERA fe ON r.FILA_ID = fe.FILA_ID "
+                + "WHERE r.RESERVA_ID = ?";
+        return sql;
+    }
+
+    @Override
     public List<ReservaDTO> listar(ReservaParametros reservaParametro) {
         // Evita NullPointerException si reservaParametro es null
         if (reservaParametro == null) {
@@ -351,7 +438,8 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 .setFechaInicio(reservaParametro.getFechaInicio())
                 .setFechaFin(reservaParametro.getFechaFin())
                 .setIdLocal(reservaParametro.getIdLocal())
-                .setdniCliente(reservaParametro.getdniCliente())
+                .setdniCliente(reservaParametro.getDniCliente())
+                .setUsuarioId(reservaParametro.getUsuarioId())
                 .setEstado(reservaParametro.getEstado())
                 .buildReservaParametros();
 
@@ -381,6 +469,7 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 + "    AND (? IS NULL OR r.TIPO_RESERVA = ?) "
                 + "    AND (? IS NULL OR r.LOCAL_ID = ?) "
                 + "    AND (? IS NULL OR u.NUMERO_DOC = ?) " 
+                + "    AND (? IS NULL OR r.USUARIO_ID = ?) "
                 + "    AND ((? IS NULL AND ? IS NULL) OR (r.FECHA_HORA_REGISTRO BETWEEN ? AND ?)) "
                 + "ORDER BY r.ESTADO DESC, r.FECHA_HORA_REGISTRO ASC";
         return sql;
@@ -413,25 +502,33 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
                 this.statement.setNull(5, Types.INTEGER);
                 this.statement.setNull(6, Types.INTEGER);
             }
-            // 7-8 Usuario
-            if (parametros.getdniCliente()!= null) {
-                this.statement.setString(7, parametros.getdniCliente());
-                this.statement.setString(8, parametros.getdniCliente());
+            // 7-8 DNI Cliente
+            if (parametros.getDniCliente()!= null) {
+                this.statement.setString(7, parametros.getDniCliente());
+                this.statement.setString(8, parametros.getDniCliente());
             } else {
                 this.statement.setNull(7, Types.VARCHAR);
                 this.statement.setNull(8, Types.VARCHAR);
             }
-            // 9-12 Fechas
+            // 9-10 Usuario ID
+            if (parametros.getUsuarioId() != null) {
+                this.statement.setInt(9, parametros.getUsuarioId());
+                this.statement.setInt(10, parametros.getUsuarioId());
+            } else {
+                this.statement.setNull(9, Types.INTEGER);
+                this.statement.setNull(10, Types.INTEGER);
+            }
+            // 11-14 Fechas
             if (parametros.getFechaInicio() != null && parametros.getFechaFin() != null) {
-                this.statement.setObject(9, parametros.getFechaInicio());
-                this.statement.setObject(10, parametros.getFechaFin());
                 this.statement.setObject(11, parametros.getFechaInicio());
                 this.statement.setObject(12, parametros.getFechaFin());
+                this.statement.setObject(13, parametros.getFechaInicio());
+                this.statement.setObject(14, parametros.getFechaFin());
             } else {
-                this.statement.setNull(9, Types.TIMESTAMP);
-                this.statement.setNull(10, Types.TIMESTAMP);
                 this.statement.setNull(11, Types.TIMESTAMP);
                 this.statement.setNull(12, Types.TIMESTAMP);
+                this.statement.setNull(13, Types.TIMESTAMP);
+                this.statement.setNull(14, Types.TIMESTAMP);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,36 +575,57 @@ public class ReservaDAOImpl extends DAOImplBase implements ReservaDAO {
         int mesasAsignadas = 0;
 
         String sqlSeleccionarMesas
-                = "SELECT m.MESA_ID, m.CAPACIDAD "
+                = "SELECT m.MESA_ID, m.CAPACIDAD, m.TMESA_ID "
                 + "FROM RES_MESAS m "
-                + "WHERE m.ESTADO = 'ACTIVO' "
+                + "WHERE m.ESTADO = 'DISPONIBLE' "
                 + "AND m.LOCAL_ID = ? "
+                + "AND m.TMESA_ID = ? "
                 + "AND m.MESA_ID NOT IN ( "
                 + "  SELECT rxm.MESA_ID "
                 + "  FROM RES_RESERVAS_x_MESAS rxm "
                 + "  JOIN RES_RESERVAS r ON r.RESERVA_ID = rxm.RESERVA_ID "
-                + "  WHERE r.FECHA_HORA_REGISTRO = ? "
+                + "  WHERE r.FECHA_HORA_REGISTRO BETWEEN ? AND ? "
+                + "  AND r.ESTADO IN ('PENDIENTE', 'CONFIRMADA') "
                 + ") "
                 + "ORDER BY m.CAPACIDAD ASC";
 
         String sqlInsertarAsignacion
                 = "INSERT INTO RES_RESERVAS_X_MESAS (RESERVA_ID, MESA_ID) VALUES (?, ?)";
+        
+        String sqlActualizarEstadoMesa
+                = "UPDATE RES_MESAS SET ESTADO = 'RESERVADA' WHERE MESA_ID = ?";
 
-        try (Connection conn = dataSource.getConnection(); PreparedStatement stmtMesas = conn.prepareStatement(sqlSeleccionarMesas); PreparedStatement stmtInsert = conn.prepareStatement(sqlInsertarAsignacion)) {
+        try (Connection conn = DBManager.getInstance().getConnection(); 
+             PreparedStatement stmtMesas = conn.prepareStatement(sqlSeleccionarMesas); 
+             PreparedStatement stmtInsert = conn.prepareStatement(sqlInsertarAsignacion);
+             PreparedStatement stmtUpdate = conn.prepareStatement(sqlActualizarEstadoMesa)) {
+
+            // Calcular ventana de tiempo (2 horas antes y después para evitar conflictos)
+            long dosHoras = 2 * 60 * 60 * 1000; // 2 horas en milisegundos
+            Timestamp fechaInicio = new Timestamp(reserva.getFechaHoraRegistro().getTime() - dosHoras);
+            Timestamp fechaFin = new Timestamp(reserva.getFechaHoraRegistro().getTime() + dosHoras);
 
             stmtMesas.setInt(1, reserva.getLocal().getIdLocal());
-            stmtMesas.setObject(2, reserva.getFecha_Hora());
+            stmtMesas.setInt(2, reserva.getTipoMesa().getIdTipoMesa());
+            stmtMesas.setTimestamp(3, fechaInicio);
+            stmtMesas.setTimestamp(4, fechaFin);
 
             ResultSet rs = stmtMesas.executeQuery();
-            int personasRestantes = reserva.getCantidad_personas();
+            int personasRestantes = reserva.getCantidadPersonas();
+            int mesasNecesarias = reserva.getNumeroMesas() != null ? reserva.getNumeroMesas() : 1;
 
-            while (rs.next() && personasRestantes > 0) {
+            while (rs.next() && personasRestantes > 0 && mesasAsignadas < mesasNecesarias) {
                 int mesaId = rs.getInt("MESA_ID");
                 int capacidad = rs.getInt("CAPACIDAD");
 
+                // Insertar en tabla de relación
                 stmtInsert.setInt(1, reserva.getIdReserva());
                 stmtInsert.setInt(2, mesaId);
                 stmtInsert.executeUpdate();
+                
+                // Actualizar estado de la mesa
+                stmtUpdate.setInt(1, mesaId);
+                stmtUpdate.executeUpdate();
 
                 personasRestantes -= capacidad;
                 mesasAsignadas++;

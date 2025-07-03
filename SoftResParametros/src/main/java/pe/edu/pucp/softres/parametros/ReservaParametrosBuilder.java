@@ -4,8 +4,8 @@
  */
 package pe.edu.pucp.softres.parametros;
 
-import java.time.LocalDateTime;
 import java.util.Date;
+
 import pe.edu.pucp.softres.model.EstadoReserva;
 import pe.edu.pucp.softres.model.TipoReserva;
 
@@ -16,6 +16,7 @@ public class ReservaParametrosBuilder {
     private Date fechaFin;
     private Integer idLocal;
     private String dniCliente;
+    private Integer usuarioId;
     private EstadoReserva estado;
 
     public ReservaParametrosBuilder() {
@@ -24,6 +25,7 @@ public class ReservaParametrosBuilder {
         this.fechaFin = null;
         this.idLocal = null;
         this.dniCliente = null;
+        this.usuarioId = null;
         this.estado = null;
     }
 
@@ -52,6 +54,11 @@ public class ReservaParametrosBuilder {
         return this;
     }
 
+    public ReservaParametrosBuilder setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
+        return this;
+    }
+
     public ReservaParametrosBuilder setEstado(EstadoReserva estado) {
         this.estado = estado;
         return this;
@@ -63,9 +70,9 @@ public class ReservaParametrosBuilder {
         parametros.setFechaInicio(this.fechaInicio);
         parametros.setFechaFin(this.fechaFin);
         parametros.setIdLocal(this.idLocal);
-        parametros.setdniCliente(dniCliente);
+        parametros.setDniCliente(dniCliente);
+        parametros.setUsuarioId(this.usuarioId);
         parametros.setEstado(this.estado);
         return parametros;
     }
 }
-
